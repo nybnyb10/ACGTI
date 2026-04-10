@@ -52,26 +52,24 @@ function buildNarrativeTags(scores: Record<DimensionId, number>, archetype: Arch
     score: scores[dimension],
   }))
     .sort((left, right) => Math.abs(right.score) - Math.abs(left.score))
-    .slice(0, 3)
+    .slice(0, 4)
 
   const dimensionLabels: Record<DimensionId, string> = {
-    expression: ranked[0]?.score >= 0 ? '高表达' : '低表达',
-    temperature: ranked[1]?.score >= 0 ? '热感叙事' : '冷感叙事',
-    judgement: ranked[2]?.score >= 0 ? '感受优先' : '判断优先',
+    expression: scores.expression >= 0 ? '外放系' : '收束系',
+    temperature: scores.temperature >= 0 ? '热血系' : '冷感系',
+    judgement: scores.judgement >= 0 ? '理性系' : '感性系',
     order: scores.order >= 0 ? '守序倾向' : '游离倾向',
-    agency: scores.agency >= 0 ? '推进型' : '等待型',
-    aura: scores.aura >= 0 ? '气场外放' : '气场内敛',
+    agency: scores.agency >= 0 ? '推进型' : '跟随型',
+    aura: scores.aura >= 0 ? '危险感' : '治愈感',
   }
 
   return Array.from(
     new Set([
       archetype.tags[0],
       archetype.tags[1],
-      dimensionLabels[ranked[0]?.dimension ?? 'expression'],
-      dimensionLabels[ranked[1]?.dimension ?? 'temperature'],
-      dimensionLabels[ranked[2]?.dimension ?? 'judgement'],
+      ...ranked.map(({ dimension }) => dimensionLabels[dimension]),
     ]),
-  ).slice(0, 3)
+  ).slice(0, 6)
 }
 
 function rankCharacters(
