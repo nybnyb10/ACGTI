@@ -19,9 +19,11 @@
 ## 截图预览
 
 <p align="center">
-  <img src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/26_04_5bb47fd5234774b0c0d5fa105ced1ee3.webp" alt="问卷界面" width="45%" />
-  &nbsp;&nbsp;
-  <img src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/26_04_a33df82b5effb012ef0649427006d301.webp" alt="结果页" width="45%" />
+  <img src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/26_04_f10e65b456aae5fdb30a2c42e767cf28.webp" alt="截图 1" width="30%" />
+  &nbsp;
+  <img src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/26_04_4c23a24cd1e854f3852e2f2ed46cabd6.webp" alt="截图 2" width="30%" />
+  &nbsp;
+  <img src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/26_04_cd45c233a68504cfbfa9319594c223c2.webp" alt="截图 3" width="30%" />
 </p>
 
 ## 特性
