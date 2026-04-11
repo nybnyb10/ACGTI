@@ -157,7 +157,7 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
           </div>
           <div class="hero-metrics">
             <div class="hero-metric">
-              <span>角色匹配概率</span>
+              <span>稀有度</span>
               <strong>{{ result.matchProbability }}%</strong>
             </div>
             <div class="hero-metric">

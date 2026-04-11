@@ -222,18 +222,18 @@
   },
   {
     "id": "q14",
-    "text": "游戏卡关时，我宁愿开风灵月影一刀999，也不愿意查攻略。",
+    "text": "游戏卡关时，我不介意直接开风灵月影。",
     "scene": "游戏行为",
     "dimension": "S_N",
     "sign": 1,
     "weights": {
-      "strategist": 2,
-      "trickster": 2,
-      "healer": 1,
-      "ruler": -1,
+      "strategist": 1,
+      "trickster": 1,
+      "healer": 0,
+      "ruler": -2,
       "guardian": -1,
       "hero": 0,
-      "lonewolf": 0,
+      "lonewolf": 1,
       "berserker": 0
     }
   },
@@ -363,14 +363,14 @@
     "dimension": "T_F",
     "sign": 1,
     "weights": {
-      "strategist": 2,
-      "ruler": 1,
-      "healer": -2,
+      "strategist": 0,
+      "ruler": 0,
+      "healer": 2,
       "guardian": -1,
-      "berserker": 1,
-      "hero": 0,
+      "berserker": 0,
+      "hero": 2,
       "lonewolf": 0,
-      "trickster": -1
+      "trickster": 1
     }
   },
   {
@@ -499,13 +499,13 @@
     "dimension": "S_N",
     "sign": -1,
     "weights": {
-      "strategist": 2,
-      "trickster": 2,
-      "healer": 1,
+      "strategist": 1,
+      "trickster": 0,
+      "healer": 2,
       "ruler": -1,
-      "guardian": -1,
+      "guardian": 0,
       "hero": 0,
-      "lonewolf": 0,
+      "lonewolf": 1,
       "berserker": 0
     }
   },
@@ -579,18 +579,18 @@
   },
   {
     "id": "q35",
-    "text": "我觉得“傲娇”属性已经过时了，现在流行“重力系”，就是那种让人喘不过气的爱。",
+    "text": "我更容易被“腹黑”的人设吸引。",
     "scene": "属性评价",
     "dimension": "S_N",
     "sign": 1,
     "weights": {
-      "strategist": 2,
-      "trickster": 2,
-      "healer": 1,
-      "ruler": -1,
-      "guardian": -1,
+      "strategist": 1,
+      "trickster": 0,
+      "healer": 2,
+      "ruler": 0,
+      "guardian": 1,
       "hero": 0,
-      "lonewolf": 0,
+      "lonewolf": 1,
       "berserker": 0
     }
   },
