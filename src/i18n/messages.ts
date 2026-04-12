@@ -66,7 +66,7 @@ export const messages = {
       start: '开始测试 →',
       starProject: '去给项目 Star',
       relayTitle: '如果你觉得这个测试有点准',
-      relayCopy: '欢迎把测试链接顺手转发给朋友、群聊或同好圈。好的结果页，本来就该被扩散出去。',
+      relayCopy: '欢迎把测试链接顺手转发给朋友、群聊或同好圈。',
       relayButton: '复制测试链接',
       relayFeedback: '测试链接已复制，去发给朋友看看。',
       stats: [

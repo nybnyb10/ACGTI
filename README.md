@@ -51,6 +51,8 @@
 - 添加新题目 → 编辑 `src/data/questions.json`
 - 修复 Bug / 改进 UI → 直接提 PR
 
+仓库已配置 GitHub Actions CI，会在 `push` 到 `main` 和所有 PR 上自动执行 `npm ci` 与 `npm run build`，用于确认静态站点能够正常构建。线上部署仍由 Cloudflare Pages 负责。
+
 ## 技术栈
 
 <p align="center">
@@ -131,6 +133,12 @@ npm run build
 ```
 
 构建产物输出到 `dist/`，配置为相对路径（`base: './'`），可直接部署到 Cloudflare Pages 等静态托管平台。
+
+## 持续集成与部署
+
+- GitHub Actions：负责在 `main` push / PR 时校验构建是否通过
+- Cloudflare Pages：负责连接 GitHub 后的自动构建与部署
+- 当前未配置 GitHub Release 流水线，待版本里程碑稳定后再引入
 
 ## 内容数据
 

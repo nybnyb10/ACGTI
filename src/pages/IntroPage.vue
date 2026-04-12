@@ -1,7 +1,20 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import { useI18n } from '../i18n'
 
 const { t, tm } = useI18n()
+const relayFeedback = ref('')
+
+async function copyQuizLink() {
+  try {
+    const link = new URL('/quiz', window.location.href).toString()
+    await navigator.clipboard.writeText(link)
+    relayFeedback.value = t('home.relayFeedback')
+  } catch {
+    relayFeedback.value = t('app.common.copyFail')
+  }
+}
 </script>
 
 <template>
@@ -13,6 +26,16 @@ const { t, tm } = useI18n()
       <div class="cta-row" style="justify-content: center;">
         <RouterLink class="button button-primary" to="/quiz">{{ t('intro.start') }}</RouterLink>
       </div>
+    </section>
+
+    <section class="panel relay-panel" v-reveal>
+      <h2 class="section-title">{{ t('intro.relayTitle') }}</h2>
+      <p class="lead relay-copy">{{ t('intro.relayCopy') }}</p>
+      <div class="cta-row">
+        <button class="button button-secondary" type="button" @click="copyQuizLink">{{ t('intro.relayButton') }}</button>
+        <RouterLink class="button button-primary" to="/quiz">{{ t('intro.start') }}</RouterLink>
+      </div>
+      <p v-if="relayFeedback" class="relay-feedback">{{ relayFeedback }}</p>
     </section>
 
     <section class="split-grid" v-reveal>
@@ -35,3 +58,23 @@ const { t, tm } = useI18n()
     </section>
   </div>
 </template>
+
+<style scoped>
+.relay-panel {
+  display: grid;
+  gap: 14px;
+  background: linear-gradient(180deg, #fbfdfd 0%, #f4faf7 100%);
+  border-color: #dce9e3;
+}
+
+.relay-copy {
+  margin: 0;
+}
+
+.relay-feedback {
+  margin: 0;
+  color: #33a474;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+</style>

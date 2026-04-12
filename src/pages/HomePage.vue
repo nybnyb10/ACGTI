@@ -11,6 +11,12 @@
             {{ t('home.starProject') }}
           </a>
         </div>
+        <div class="hero-relay">
+          <p class="hero-relay-title">{{ t('home.relayTitle') }}</p>
+          <p class="hero-relay-copy">{{ t('home.relayCopy') }}</p>
+          <button class="hero-relay-button" type="button" @click="copyQuizLink">{{ t('home.relayButton') }}</button>
+          <p v-if="relayFeedback" class="hero-relay-feedback">{{ relayFeedback }}</p>
+        </div>
       </div>
 
       <div class="hero-wave"></div>
@@ -131,13 +137,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 import AdsenseSlot from '../components/AdsenseSlot.vue'
 import { useI18n } from '../i18n'
 
 const homeAdSlot = String(import.meta.env.VITE_ADSENSE_SLOT_HOME ?? '').trim()
 const { t, tm } = useI18n()
+const relayFeedback = ref('')
 
 const stats = computed(() => tm<Array<{ value: string; label: string; color: string }>>('home.stats'))
 
@@ -181,6 +188,16 @@ const testimonials = computed(() =>
     quote: tm<string[]>('home.testimonials')[index] ?? '',
   })),
 )
+
+async function copyQuizLink() {
+  try {
+    const link = new URL('/quiz', window.location.href).toString()
+    await navigator.clipboard.writeText(link)
+    relayFeedback.value = t('home.relayFeedback')
+  } catch {
+    relayFeedback.value = t('app.common.copyFail')
+  }
+}
 </script>
 
 <style scoped>
@@ -238,6 +255,48 @@ const testimonials = computed(() =>
 
 .hero-button:hover {
   transform: translateY(-2px);
+}
+
+.hero-relay {
+  width: min(720px, 100%);
+  margin: 1.5rem auto 0;
+  padding: 1.1rem 1.25rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(6px);
+}
+
+.hero-relay-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.hero-relay-copy {
+  margin: 0.45rem 0 0;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  opacity: 0.92;
+}
+
+.hero-relay-button {
+  margin-top: 0.9rem;
+  min-height: 42px;
+  padding: 0 1.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: #2f3a45;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.hero-relay-feedback {
+  margin: 0.65rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  opacity: 0.95;
 }
 
 .hero-wave {

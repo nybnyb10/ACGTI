@@ -322,6 +322,12 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
           <p v-if="share.feedback.value" class="sidebar-feedback">{{ share.feedback.value }}</p>
         </div>
 
+        <div class="sidebar-card relay-card">
+          <p class="small-title">{{ t('result.relayTitle') }}</p>
+          <p class="relay-copy">{{ t('result.relayCopy') }}</p>
+          <p class="relay-hint">{{ t('result.relayHint') }}</p>
+        </div>
+
         <div class="sidebar-card project-card">
           <p class="small-title">{{ t('result.ossTitle') }}</p>
           <p style="margin: 8px 0 12px; font-size: 14px; line-height: 1.5; color: #5f6b75;">
@@ -870,6 +876,26 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
   font-weight: 700;
   color: #33a474;
   text-align: center;
+}
+
+.relay-card {
+  background: linear-gradient(180deg, #ffffff, #f6fbf8);
+  border-color: #d9e9e1;
+}
+
+.relay-copy {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #4f5d67;
+}
+
+.relay-hint {
+  margin: 10px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #7b8690;
+  font-weight: 600;
 }
 
 .project-card {

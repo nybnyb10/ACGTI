@@ -88,11 +88,7 @@ const showFooter = computed(() => route.path !== '/quiz')
     </header>
 
     <main class="site-main">
-      <router-view v-slot="{ Component }">
-        <transition name="page-fade" mode="out-in">
-          <component :is="Component" />
-        </transition>
-      </router-view>
+      <RouterView />
     </main>
 
     <footer v-if="showFooter" class="site-footer">
@@ -148,3 +144,4 @@ const showFooter = computed(() => route.path !== '/quiz')
     </footer>
   </div>
 </template>
+
