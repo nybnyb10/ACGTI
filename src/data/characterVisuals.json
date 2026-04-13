@@ -110,5 +110,9 @@
 	"luo-tianyi": {
 		"image": "/images/characters/luo-tianyi.png",
 		"accent": "#66ccff"
+	},
+	"runami-yachiyo": {
+		"image": "/images/characters/八千代.png",
+		"accent": "#d88fd8"
 	}
 }

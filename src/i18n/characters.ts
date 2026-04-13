@@ -172,6 +172,12 @@ const characterNameI18n: Record<string, LocalizedText> = {
     en: 'Luo Tianyi',
     ja: '洛天依',
   },
+  'runami-yachiyo': {
+    'zh-CN': '月见八千代',
+    'zh-TW': '月見八千代',
+    en: 'Yachiyo Tsukimi',
+    ja: '月見八千代',
+  },
 }
 
 const seriesI18n: Record<string, LocalizedText> = {
@@ -258,6 +264,12 @@ const seriesI18n: Record<string, LocalizedText> = {
     'zh-TW': '虛擬主播',
     en: 'VTuber',
     ja: 'バーチャルYouTuber',
+  },
+  '超时空辉夜姬！': {
+    'zh-CN': '超时空辉夜姬！',
+    'zh-TW': '超時空輝夜姬！',
+    en: 'Cho-Kaguyahime!',
+    ja: '超かぐや姫！',
   },
 }
 
