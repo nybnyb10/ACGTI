@@ -16,3 +16,15 @@ export function getCharacterPopulationProbability(characterId: string | null | u
 
   return probabilityDataset.probabilities[characterId] ?? 0
 }
+
+export function formatCharacterProbability(probability: number) {
+  if (probability <= 0) {
+    return '0'
+  }
+
+  if (probability < 0.01) {
+    return '<0.01'
+  }
+
+  return probability.toFixed(2).replace(/\.?0+$/, '')
+}

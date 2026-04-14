@@ -142,7 +142,7 @@
     ],
     "code": "HKRM",
     "title": "贫穷但能打·摸鱼巫女",
-    "archetypeId": "icebound-observer",
+    "archetypeId": "chaos-spark",
     "tags": [
       "香火钱=0",
       "战力∞",
@@ -161,44 +161,39 @@
     "signature": {
       "uniqueAxes": {
         "agency": 3,
-        "order": 0,
-        "temperature": 1
+        "order": -1,
+        "expression": 1
       },
       "questionAffinity": [
         {
           "questionId": "q2",
           "expected": "agree",
-          "weight": 1.8
-        },
-        {
-          "questionId": "q4",
-          "expected": "agree",
           "weight": 1.7
         },
         {
-          "questionId": "q5",
+          "questionId": "q6",
           "expected": "agree",
           "weight": 1.5
         },
         {
           "questionId": "q14",
           "expected": "agree",
-          "weight": 1.7
+          "weight": 1.9
         },
         {
-          "questionId": "q21",
+          "questionId": "q25",
+          "expected": "agree",
+          "weight": 1.6
+        },
+        {
+          "questionId": "q28",
           "expected": "agree",
           "weight": 1.6
         },
         {
           "questionId": "q31",
           "expected": "agree",
-          "weight": 1.4
-        },
-        {
-          "questionId": "q38",
-          "expected": "disagree",
-          "weight": 1.8
+          "weight": 1.7
         }
       ]
     }
@@ -326,7 +321,11 @@
     "id": "kaname-madoka",
     "name": "鹿目圆",
     "series": "魔法少女小圆",
-    "matchCode": "INFP",
+    "matchCode": "INFJ",
+    "matchCodeFlex": [
+      "INFP"
+    ],
+    "matchWeight": 1.05,
     "code": "MADK",
     "title": "粉毛神明·世界观补丁",
     "archetypeId": "gentle-healer",
@@ -344,6 +343,46 @@
       "order": 1,
       "agency": 2,
       "aura": 3
+    },
+    "signature": {
+      "uniqueAxes": {
+        "temperature": 3,
+        "aura": 3,
+        "judgement": 2,
+        "agency": 2
+      },
+      "questionAffinity": [
+        {
+          "questionId": "q17",
+          "expected": "agree",
+          "weight": 2.2
+        },
+        {
+          "questionId": "q19",
+          "expected": "agree",
+          "weight": 2.1
+        },
+        {
+          "questionId": "q22",
+          "expected": "agree",
+          "weight": 2.3
+        },
+        {
+          "questionId": "q24",
+          "expected": "agree",
+          "weight": 1.6
+        },
+        {
+          "questionId": "q25",
+          "expected": "disagree",
+          "weight": 1.7
+        },
+        {
+          "questionId": "q36",
+          "expected": "agree",
+          "weight": 1.4
+        }
+      ]
     }
   },
   {

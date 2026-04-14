@@ -3,12 +3,19 @@ import { ref } from 'vue'
 import type { QuizResult } from '../types/quiz'
 import { getLocale, t } from '../i18n'
 import { getLocalizedCharacterName, getLocalizedCharacterSeries } from '../i18n/characters'
+import { getCharacterRarityMeta } from '../utils/characterRarity'
+import { formatCharacterProbability } from '../utils/characterProbability'
 
 let htmlToImageLoader: Promise<typeof import('html-to-image')> | null = null
 
 function createShareText(result: QuizResult) {
   const featured = result.characterMatches[0]
   const locale = getLocale()
+  const rarityMeta = getCharacterRarityMeta(featured?.id)
+  const rarityLabel = rarityMeta
+    ? t(`result.rarityTiers.${rarityMeta.tier}`, undefined, rarityMeta.tier)
+    : '--'
+  const displayProbability = formatCharacterProbability(result.matchProbability)
 
   return [
     t('app.common.shareCode', { code: result.code }),
@@ -18,12 +25,19 @@ function createShareText(result: QuizResult) {
           series: getLocalizedCharacterSeries(featured, locale),
         })
       : t('app.common.shareUnknown'),
-    t('app.common.shareProbability', { prob: result.matchProbability }),
+    rarityMeta
+      ? t('app.common.shareRarity', {
+          tier: rarityLabel,
+          rank: rarityMeta.rank,
+          total: rarityMeta.total,
+        })
+      : null,
+    t('app.common.shareProbability', { prob: displayProbability }),
     t('app.common.shareProbabilityDesc'),
     t('app.common.shareArchetype', { name: t(`archetypes.${result.archetype.id}.name`) }),
     t(`archetypes.${result.archetype.id}.subtitle`),
     t('app.common.shareRole', { role: t(`archetypes.${result.archetype.id}.narrativeRole`) }),
-  ].join('\n')
+  ].filter(Boolean).join('\n')
 }
 
 export function useShare() {

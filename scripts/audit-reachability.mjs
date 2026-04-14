@@ -33,6 +33,15 @@ const ARCHETYPE_WEIGHT = 0.35
 const VECTOR_WEIGHT = 0.3
 const CHARACTER_SPECIFIC_WEIGHT = 0.1
 
+function createRng(seed) {
+  let state = seed >>> 0
+
+  return () => {
+    state = (state * 1664525 + 1013904223) >>> 0
+    return state / 0x100000000
+  }
+}
+
 function normalizeQuestionWeights(weights) {
   const completed = Object.keys(ROLE_TO_ARCHETYPE).reduce((acc, role) => {
     acc[role] = weights?.[role] ?? 0
@@ -167,15 +176,17 @@ function scoreCharacter(profile, character) {
   return MBTI_WEIGHT * mbti + ARCHETYPE_WEIGHT * archetype + VECTOR_WEIGHT * vector + CHARACTER_SPECIFIC_WEIGHT * specific
 }
 
-function randomAnswers() {
-  return questions.map(() => Math.floor(Math.random() * 7) - 3)
+function randomAnswers(rng) {
+  return questions.map(() => Math.floor(rng() * 7) - 3)
 }
 
-const iterations = Number(process.argv[2] ?? 20000)
+const iterations = Number(process.argv[2] ?? 50000)
+const seed = Number(process.argv[3] ?? 20260411)
+const rng = createRng(seed)
 const counts = new Map(characters.map((character) => [character.id, 0]))
 
 for (let index = 0; index < iterations; index += 1) {
-  const profile = buildScores(randomAnswers())
+  const profile = buildScores(randomAnswers(rng))
   const ranked = [...characters]
     .map((character) => ({ id: character.id, score: scoreCharacter(profile, character) }))
     .sort((left, right) => right.score - left.score)

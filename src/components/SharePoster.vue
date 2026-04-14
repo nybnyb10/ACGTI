@@ -4,6 +4,7 @@ import { ref, computed } from 'vue'
 import { useI18n } from '../i18n'
 import { getHiddenCharacterTags, getHiddenCharacterTitle, getLocalizedCharacterName, getLocalizedCharacterSeries, isHiddenCharacter } from '../i18n/characters'
 import type { QuizResult } from '../types/quiz'
+import { getCharacterRarityMeta } from '../utils/characterRarity'
 import AppIcon from './AppIcon.vue'
 
 const props = defineProps<{
@@ -19,6 +20,23 @@ defineExpose({
 
 const primaryCharacter = computed(() => props.result.characterMatches[0] ?? null)
 const resultThemeColor = computed(() => primaryCharacter.value?.accent ?? props.result.archetype.accent ?? '#e2ad3b')
+const rarityMeta = computed(() => getCharacterRarityMeta(primaryCharacter.value?.id))
+const rarityTierLabel = computed(() => {
+  const tier = rarityMeta.value?.tier
+  return tier
+    ? t(`result.rarityTiers.${tier}`, undefined, tier)
+    : '--'
+})
+const rarityRankLabel = computed(() => {
+  if (!rarityMeta.value) {
+    return ''
+  }
+
+  return t('result.rarityRank', {
+    rank: rarityMeta.value.rank,
+    total: rarityMeta.value.total,
+  }, `相对稀有排名 #${rarityMeta.value.rank}/${rarityMeta.value.total}`)
+})
 </script>
 
 <template>
@@ -45,7 +63,8 @@ const resultThemeColor = computed(() => primaryCharacter.value?.accent ?? props.
           <div class="share-poster__metric-divider"></div>
           <div class="share-poster__metric">
             <span class="metric-label">{{ t('result.rarity') }}</span>
-            <strong class="metric-value">{{ result.matchProbability }}%</strong>
+            <strong class="metric-value">{{ rarityTierLabel }}</strong>
+            <span class="metric-subvalue">{{ rarityRankLabel }}</span>
           </div>
         </div>
 
@@ -175,6 +194,15 @@ const resultThemeColor = computed(() => primaryCharacter.value?.accent ?? props.
   font-weight: 800;
   color: #333e49;
   line-height: 1;
+}
+
+.metric-subvalue {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #7b8892;
+  font-weight: 700;
 }
 
 .share-poster__metric-divider {
