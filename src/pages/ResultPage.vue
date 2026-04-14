@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import AdsenseSlot from '../components/AdsenseSlot.vue'
 import AppIcon from '../components/AppIcon.vue'
-import SharePoster from '../components/SharePoster.vue'
 import { useShare } from '../composables/useShare'
 import { useQuiz } from '../composables/useQuiz'
 import { useI18n } from '../i18n'
 import { getHiddenCharacterNote, getHiddenCharacterTags, getHiddenCharacterTitle, getLocalizedCharacterName, isHiddenCharacter } from '../i18n/characters'
 import { normalizeMbtiCode } from '../utils/quizEngine'
+
+// SharePoster 只在用户点击"导出图片"时才加载和挂载
+const SharePosterAsync = defineAsyncComponent(() => import('../components/SharePoster.vue'))
 
 const route = useRoute()
 const router = useRouter()
@@ -18,16 +20,14 @@ const activeDebugResult = ref<ReturnType<typeof quiz.createDebugResult>>(null)
 const result = computed(() => activeDebugResult.value ?? quiz.latestResult.value)
 const isCharacterImageBroken = ref(false)
 const share = useShare()
-const posterRef = ref<InstanceType<typeof SharePoster> | null>(null)
+const posterRef = ref<{ rootEl: HTMLElement | null } | null>(null)
+const shouldMountPoster = ref(false)
 const { locale, t, tm } = useI18n()
 const resultAdSlot = String(import.meta.env.VITE_ADSENSE_SLOT_RESULT ?? '').trim()
 
-function exportPosterImage() {
-  if (!result.value || !posterRef.value?.rootEl) return
-  void share.exportPoster(posterRef.value.rootEl, result.value)
-}
-
-onMounted(() => {
+// 结果页需要数据来处理 debug 查询和角色匹配
+onMounted(async () => {
+  await quiz.ensureData()
   quiz.resumeLastResult()
   applyDebugResultFromRoute()
 
@@ -35,6 +35,17 @@ onMounted(() => {
     void router.replace('/quiz')
   }
 })
+
+async function exportPosterImage() {
+  if (!result.value) return
+  // 首次导出时才挂载 SharePoster 组件
+  if (!shouldMountPoster.value) {
+    shouldMountPoster.value = true
+    await new Promise<void>((resolve) => setTimeout(resolve, 100))
+  }
+  if (!posterRef.value?.rootEl) return
+  void share.exportPoster(posterRef.value.rootEl, result.value)
+}
 
 watch(
   () => [route.query.type, route.query.character],
@@ -76,12 +87,12 @@ function applyDebugResultFromRoute() {
   }
 
   const preferredCharacter = requestedCharacterId
-    ? quiz.characters.find((item) => item.id === requestedCharacterId)
+    ? quiz.characters.value.find((item) => item.id === requestedCharacterId)
     : null
 
   // Backward compatible with old debug links using ?type=XXXX.
   const fallbackCharacter = !preferredCharacter && normalizedType
-    ? quiz.characters.find((item) => item.matchCode === normalizedType)
+    ? quiz.characters.value.find((item) => item.matchCode === normalizedType)
     : null
 
   const characterId = preferredCharacter?.id ?? fallbackCharacter?.id ?? ''
@@ -93,7 +104,7 @@ function applyDebugResultFromRoute() {
 const primaryCharacterImage = computed(() => {
   const primary = result.value?.characterMatches?.[0]
   if (!primary) return ''
-  return primary.image || `/images/characters/${primary.id}.png`
+  return primary.image || `/images/characters/${primary.id}.webp`
 })
 
 const primaryCharacter = computed(() => result.value?.characterMatches?.[0] ?? null)
@@ -182,7 +193,7 @@ function scrollToSection(sectionId: string) {
           <p class="hero-caption">{{ t('result.heroCaption') }}</p>
           <div class="hero-title-wrap">
             <h1 class="hero-title">{{ primaryCharacter ? getLocalizedCharacterName(primaryCharacter, locale, { revealHidden: true }) : t('archetypes.' + result.archetype.id + '.name', undefined, result.archetype.name) }}</h1>
-            <span v-if="primaryCharacter && isHiddenCharacter(primaryCharacter)" class="hero-hidden-badge">{{ getHiddenCharacterTitle(locale) }}</span>
+            <span v-if="primaryCharacter && isHiddenCharacter(primaryCharacter)" class="hero-hidden-badge">{{ getHiddenCharacterTitle(locale, primaryCharacter) }}</span>
           </div>
           <div class="hero-badge-wrap">
             <span class="hero-code">{{ displayCode }}</span>
@@ -223,6 +234,8 @@ function scrollToSection(sectionId: string) {
               :src="primaryCharacterImage"
               :alt="primaryCharacter ? getLocalizedCharacterName(primaryCharacter, locale) : 'Character'"
               class="hero-image"
+              decoding="async"
+              fetchpriority="high"
               @error="hideBrokenImage"
             />
             <div v-else class="hero-image-fallback">
@@ -243,7 +256,7 @@ function scrollToSection(sectionId: string) {
       <main class="result-main">
         <section class="intro-block" v-reveal>
           <p>{{ t('archetypes.' + result.archetype.id + '.description', undefined, result.archetype.description) }}</p>
-          <p>{{ primaryCharacter ? (isHiddenCharacter(primaryCharacter) ? getHiddenCharacterNote(locale) : t('characters.' + primaryCharacter.id + '.note', undefined, primaryCharacter.note)) : '' }}</p>
+          <p>{{ primaryCharacter ? (isHiddenCharacter(primaryCharacter) ? getHiddenCharacterNote(locale, primaryCharacter) : t('characters.' + primaryCharacter.id + '.note', undefined, primaryCharacter.note)) : '' }}</p>
           <div v-if="primaryCharacter?.personaBasis?.type === 'fandom-impression'" class="persona-basis-notice">
             <span class="persona-basis-badge">{{ t('result.personaBasisBadge') }}</span>
             <p class="persona-basis-summary">{{ t('result.personaBasisTip') }}</p>
@@ -339,7 +352,7 @@ function scrollToSection(sectionId: string) {
 </div>
 
 <div class="poster-capture-wrapper">
-  <SharePoster ref="posterRef" :result="result" />
+  <SharePosterAsync v-if="shouldMountPoster" ref="posterRef" :result="result" />
 </div>
 
 
@@ -352,7 +365,7 @@ function scrollToSection(sectionId: string) {
         <div class="sidebar-card profile-card">
           <p class="small-title">{{ t('result.hitCharacter') }}</p>
           <h3>{{ primaryCharacter ? getLocalizedCharacterName(primaryCharacter, locale, { revealHidden: true }) : t('archetypes.' + result.archetype.id + '.name', undefined, result.archetype.name) }}</h3>
-          <p v-if="primaryCharacter && isHiddenCharacter(primaryCharacter)" class="profile-hidden-flag">{{ getHiddenCharacterTitle(locale) }}</p>
+          <p v-if="primaryCharacter && isHiddenCharacter(primaryCharacter)" class="profile-hidden-flag">{{ getHiddenCharacterTitle(locale, primaryCharacter) }}</p>
           <p class="profile-code">{{ displayCode }}</p>
           <p class="profile-probability">{{ t('result.matchProbability', { value: result.matchProbability }) }}</p>
         </div>

@@ -33,7 +33,7 @@ const resultThemeColor = computed(() => primaryCharacter.value?.accent ?? props.
             {{ primaryCharacter ? getLocalizedCharacterName(primaryCharacter, locale, { revealHidden: true }) : t('archetypes.' + result.archetype.id + '.name', undefined, result.archetype.name) }}
           </h2>
           <p class="share-poster__subtitle">
-            {{ primaryCharacter && isHiddenCharacter(primaryCharacter) ? getHiddenCharacterTitle(locale) : (primaryCharacter?.title || result.archetype.subtitle) }}
+            {{ primaryCharacter && isHiddenCharacter(primaryCharacter) ? getHiddenCharacterTitle(locale, primaryCharacter) : (primaryCharacter?.title || result.archetype.subtitle) }}
           </p>
         </div>
 

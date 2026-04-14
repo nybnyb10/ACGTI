@@ -1,166 +1,212 @@
 {
-	"hatsune-miku": {
-		"image": "/images/characters/初音未来.png",
-		"accent": "#39c5bb"
-	},
-	"ayanami-rei": {
-		"image": "/images/characters/绫波丽.png",
-		"accent": "#9ab0d3"
-	},
-	"asuka-langley": {
-		"image": "/images/characters/明日香.png",
-		"accent": "#e6513d"
-	},
-	"edogawa-conan": {
-		"image": "/images/characters/柯南.png",
-		"accent": "#3567b1"
-	},
-	"hakurei-reimu": {
-		"image": "/images/characters/博丽灵梦.png",
-		"accent": "#d54045"
-	},
-	"gotoh-hitori": {
-		"image": "/images/characters/后藤一里.png",
-		"accent": "#e7a7be"
-	},
-	"fujiwara-chika": {
-		"image": "/images/characters/藤原千花.png",
-		"accent": "#f3a6d6"
-	},
-	"cirno": {
-		"image": "/images/characters/琪露诺.png",
-		"accent": "#4da6ff"
-	},
-	"misaka-mikoto": {
-		"image": "/images/characters/御坂美琴.png",
-		"accent": "#cb8e2f"
-	},
-	"kaname-madoka": {
-		"image": "/images/characters/鹿目圆.png",
-		"accent": "#f4a7c6"
-	},
-	"furina": {
-		"image": "/images/characters/芙宁娜.png",
-		"accent": "#7ec7f9"
-	},
-	"takamatsu-tomori": {
-		"image": "/images/characters/高松灯.png",
-		"accent": "#89a9d8"
-	},
-	"chihaya-anon": {
-		"image": "/images/characters/千早爱音.png",
-		"accent": "#f2c84d"
-	},
-	"yo-rana": {
-		"image": "/images/characters/乐奈.png",
-		"accent": "#6e8d53"
-	},
-	"nagasaki-soyo": {
-		"image": "/images/characters/长崎素世.png",
-		"accent": "#8d7bd4"
-	},
-	"shiina-taki": {
-		"image": "/images/characters/椎名立希.png",
-		"accent": "#4b70c2"
-	},
-	"togawa-sakiko": {
-		"image": "/images/characters/丰川祥子.png",
-		"accent": "#5f4c8a"
-	},
-	"wakaba-mutsumi": {
-		"image": "/images/characters/若叶睦.png",
-		"accent": "#6f8f44"
-	},
-	"mortis": {
-		"image": "/images/characters/若叶睦.png",
-		"accent": "#4a4f67"
-	},
-	"misumi-uika": {
-		"image": "/images/characters/三角初华.png",
-		"accent": "#cf79a4"
-	},
-	"yahata-umiri": {
-		"image": "/images/characters/八幡海铃.png",
-		"accent": "#60779a"
-	},
-	"uika-nyubara": {
-		"image": "/images/characters/祐天寺若麦.png",
-		"accent": "#f08aa9"
-	},
-	"jia-ran": {
-		"image": "/images/characters/嘉然.png",
-		"accent": "#f5ba82"
-	},
-	"eis-taffy": {
-		"image": "/images/characters/永雏塔菲.png",
-		"accent": "#f3a3b6"
-	},
-	"neuro-sama": {
-		"image": "/images/characters/neuro-sama.png",
-		"accent": "#72d8f7"
-	},
-	"evil-neuro": {
-		"image": "/images/characters/evil-neuro.png",
-		"accent": "#8b5cf6"
-	},
-	"kagamine-rin": {
-		"image": "/images/characters/kagamine-rin.png",
-		"accent": "#ffb11b"
-	},
-	"luo-tianyi": {
-		"image": "/images/characters/luo-tianyi.png",
-		"accent": "#66ccff"
-	},
-	"runami-yachiyo": {
-		"image": "/images/characters/八千代.png",
-		"accent": "#d88fd8"
-	},
-	"murasame": {
-		"image": "/images/characters/丛雨.png",
-		"accent": "#86c166"
-	},
-	"ayachi-nene": {
-		"image": "/images/characters/绫地宁宁.png",
-		"accent": "#e4a9ba"
-	},
-	"tomotake-yoshino": {
-		"image": "/images/characters/朝武芳乃.png",
-		"accent": "#d0104c"
-	},
-	"phrolova": {
-		"image": "/images/characters/弗洛洛.png",
-		"accent": "#b3202d"
-	},
-	"atri": {
-		"image": "/images/characters/亚托莉.png",
-		"accent": "#e63f32"
-	},
-	"yanami-anna": {
-		"image": "/images/characters/八奈见杏菜.png",
-		"accent": "#4f86d9"
-	},
-	"nukumizu-kaju": {
-		"image": "/images/characters/温水佳树.png",
-		"accent": "#d8b65a"
-	},
-	"elysia": {
-		"image": "/images/characters/爱莉希雅.png",
-		"accent": "#F4A7B9"
-	},
-	"haibara-ai": {
-		"image": "/images/characters/灰原哀.png",
-		"accent": "#705877"
-	},
-	"arima-kana": {
-		"image": "/images/characters/有马加奈.png",
-		"accent": "#D14A4D"
-	},
-	"nishikigi-chisato": {
-		"image": "/images/characters/锦木千束.png",
-		"accent": "#E5312C"
-	},
-	"tanikaze-amane": {
-		"image": "/images/characters/天音.png",
-		"accent": "#5E83D0"
+		"hatsune-miku": {
+			"image": "/images/characters/初音未来.webp",
+			"thumb": "/images/characters/thumbs/初音未来.webp",
+			"accent": "#39c5bb"
+		},
+		"ayanami-rei": {
+			"image": "/images/characters/绫波丽.webp",
+			"thumb": "/images/characters/thumbs/绫波丽.webp",
+			"accent": "#9ab0d3"
+		},
+		"asuka-langley": {
+			"image": "/images/characters/明日香.webp",
+			"thumb": "/images/characters/thumbs/明日香.webp",
+			"accent": "#e6513d"
+		},
+		"edogawa-conan": {
+			"image": "/images/characters/柯南.webp",
+			"thumb": "/images/characters/thumbs/柯南.webp",
+			"accent": "#3567b1"
+		},
+		"hakurei-reimu": {
+			"image": "/images/characters/博丽灵梦.webp",
+			"thumb": "/images/characters/thumbs/博丽灵梦.webp",
+			"accent": "#d54045"
+		},
+		"gotoh-hitori": {
+			"image": "/images/characters/后藤一里.webp",
+			"thumb": "/images/characters/thumbs/后藤一里.webp",
+			"accent": "#e7a7be"
+		},
+		"fujiwara-chika": {
+			"image": "/images/characters/藤原千花.webp",
+			"thumb": "/images/characters/thumbs/藤原千花.webp",
+			"accent": "#f3a6d6"
+		},
+		"cirno": {
+			"image": "/images/characters/琪露诺.webp",
+			"thumb": "/images/characters/thumbs/琪露诺.webp",
+			"accent": "#4da6ff"
+		},
+		"misaka-mikoto": {
+			"image": "/images/characters/御坂美琴.webp",
+			"thumb": "/images/characters/thumbs/御坂美琴.webp",
+			"accent": "#cb8e2f"
+		},
+		"kaname-madoka": {
+			"image": "/images/characters/鹿目圆.webp",
+			"thumb": "/images/characters/thumbs/鹿目圆.webp",
+			"accent": "#f4a7c6"
+		},
+		"furina": {
+			"image": "/images/characters/芙宁娜.webp",
+			"thumb": "/images/characters/thumbs/芙宁娜.webp",
+			"accent": "#7ec7f9"
+		},
+		"takamatsu-tomori": {
+			"image": "/images/characters/高松灯.webp",
+			"thumb": "/images/characters/thumbs/高松灯.webp",
+			"accent": "#89a9d8"
+		},
+		"chihaya-anon": {
+			"image": "/images/characters/千早爱音.webp",
+			"thumb": "/images/characters/thumbs/千早爱音.webp",
+			"accent": "#f2c84d"
+		},
+		"yo-rana": {
+			"image": "/images/characters/乐奈.webp",
+			"thumb": "/images/characters/thumbs/乐奈.webp",
+			"accent": "#6e8d53"
+		},
+		"nagasaki-soyo": {
+			"image": "/images/characters/长崎素世.webp",
+			"thumb": "/images/characters/thumbs/长崎素世.webp",
+			"accent": "#8d7bd4"
+		},
+		"shiina-taki": {
+			"image": "/images/characters/椎名立希.webp",
+			"thumb": "/images/characters/thumbs/椎名立希.webp",
+			"accent": "#4b70c2"
+		},
+		"togawa-sakiko": {
+			"image": "/images/characters/丰川祥子.webp",
+			"thumb": "/images/characters/thumbs/丰川祥子.webp",
+			"accent": "#5f4c8a"
+		},
+		"wakaba-mutsumi": {
+			"image": "/images/characters/若叶睦.webp",
+			"thumb": "/images/characters/thumbs/若叶睦.webp",
+			"accent": "#6f8f44"
+		},
+		"mortis": {
+			"image": "/images/characters/若叶睦.webp",
+			"thumb": "/images/characters/thumbs/若叶睦.webp",
+			"accent": "#4a4f67"
+		},
+		"misumi-uika": {
+			"image": "/images/characters/三角初华.webp",
+			"thumb": "/images/characters/thumbs/三角初华.webp",
+			"accent": "#cf79a4"
+		},
+		"yahata-umiri": {
+			"image": "/images/characters/八幡海铃.webp",
+			"thumb": "/images/characters/thumbs/八幡海铃.webp",
+			"accent": "#60779a"
+		},
+		"uika-nyubara": {
+			"image": "/images/characters/祐天寺若麦.webp",
+			"thumb": "/images/characters/thumbs/祐天寺若麦.webp",
+			"accent": "#f08aa9"
+		},
+		"jia-ran": {
+			"image": "/images/characters/嘉然.webp",
+			"thumb": "/images/characters/thumbs/嘉然.webp",
+			"accent": "#f5ba82"
+		},
+		"eis-taffy": {
+			"image": "/images/characters/永雏塔菲.webp",
+			"thumb": "/images/characters/thumbs/永雏塔菲.webp",
+			"accent": "#f3a3b6"
+		},
+		"neuro-sama": {
+			"image": "/images/characters/neuro-sama.webp",
+			"thumb": "/images/characters/thumbs/neuro-sama.webp",
+			"accent": "#72d8f7"
+		},
+		"evil-neuro": {
+			"image": "/images/characters/evil-neuro.webp",
+			"thumb": "/images/characters/thumbs/evil-neuro.webp",
+			"accent": "#8b5cf6"
+		},
+		"kagamine-rin": {
+			"image": "/images/characters/kagamine-rin.webp",
+			"thumb": "/images/characters/thumbs/kagamine-rin.webp",
+			"accent": "#ffb11b"
+		},
+		"luo-tianyi": {
+			"image": "/images/characters/luo-tianyi.webp",
+			"thumb": "/images/characters/thumbs/luo-tianyi.webp",
+			"accent": "#66ccff"
+		},
+		"runami-yachiyo": {
+			"image": "/images/characters/八千代.webp",
+			"thumb": "/images/characters/thumbs/八千代.webp",
+			"accent": "#d88fd8"
+		},
+		"murasame": {
+			"image": "/images/characters/丛雨.webp",
+			"thumb": "/images/characters/thumbs/丛雨.webp",
+			"accent": "#86c166"
+		},
+		"ayachi-nene": {
+			"image": "/images/characters/绫地宁宁.webp",
+			"thumb": "/images/characters/thumbs/绫地宁宁.webp",
+			"accent": "#e4a9ba"
+		},
+		"tomotake-yoshino": {
+			"image": "/images/characters/朝武芳乃.webp",
+			"thumb": "/images/characters/thumbs/朝武芳乃.webp",
+			"accent": "#d0104c"
+		},
+		"phrolova": {
+			"image": "/images/characters/弗洛洛.webp",
+			"thumb": "/images/characters/thumbs/弗洛洛.webp",
+			"accent": "#b3202d"
+		},
+		"atri": {
+			"image": "/images/characters/亚托莉.webp",
+			"thumb": "/images/characters/thumbs/亚托莉.webp",
+			"accent": "#e63f32"
+		},
+		"yanami-anna": {
+			"image": "/images/characters/八奈见杏菜.webp",
+			"thumb": "/images/characters/thumbs/八奈见杏菜.webp",
+			"accent": "#4f86d9"
+		},
+		"nukumizu-kaju": {
+			"image": "/images/characters/温水佳树.webp",
+			"thumb": "/images/characters/thumbs/温水佳树.webp",
+			"accent": "#d8b65a"
+		},
+		"elysia": {
+			"image": "/images/characters/爱莉希雅.webp",
+			"thumb": "/images/characters/thumbs/爱莉希雅.webp",
+			"accent": "#F4A7B9"
+		},
+		"haibara-ai": {
+			"image": "/images/characters/灰原哀.webp",
+			"thumb": "/images/characters/thumbs/灰原哀.webp",
+			"accent": "#705877"
+		},
+		"arima-kana": {
+			"image": "/images/characters/有马加奈.webp",
+			"thumb": "/images/characters/thumbs/有马加奈.webp",
+			"accent": "#D14A4D"
+		},
+		"nishikigi-chisato": {
+			"image": "/images/characters/锦木千束.webp",
+			"thumb": "/images/characters/thumbs/锦木千束.webp",
+			"accent": "#E5312C"
+		},
+		"tanikaze-amane": {
+			"image": "/images/characters/天音.webp",
+			"thumb": "/images/characters/thumbs/天音.webp",
+			"accent": "#5E83D0"
+		},
+		"kasugano-sora": {
+			"image": "/images/characters/春日野穹.webp",
+			"thumb": "/images/characters/thumbs/春日野穹.webp",
+			"accent": "#E2E5E9"
+		}
 	}
-}

@@ -4,6 +4,7 @@ import { getCharacterPopulationProbability } from './characterProbability.ts'
 
 type CharacterVisualMeta = {
   image: string
+  thumb?: string
   accent: string
 }
 
@@ -28,6 +29,7 @@ export function hydrateCharacterVisual<T extends CharacterMatch>(character: T): 
   const hydrated = {
     ...character,
     image: resolvePublicAsset(visual?.image ?? character.image),
+    thumb: resolvePublicAsset(visual?.thumb ?? ''),
     accent: visual?.accent ?? character.accent,
   }
 

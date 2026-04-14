@@ -1,16 +1,40 @@
-import { computed, reactive, readonly } from 'vue'
+import { computed, reactive, readonly, ref } from 'vue'
 
-import archetypesData from '../data/archetypes.json'
-import charactersData from '../data/characters.json'
-import questionsData from '../data/questions.json'
 import type { Archetype, CharacterMatch, Question, QuizRecord, QuizResult } from '../types/quiz'
 import { hydrateCharacterVisual, hydrateQuizRecord } from '../utils/characterVisuals'
 import { calculateQuizResult, createDebugQuizResult } from '../utils/quizEngine'
 import { clearLastRecord, loadLastRecord, saveLastRecord } from '../utils/storage'
 
-const questions = questionsData as Question[]
-const archetypes = archetypesData as Archetype[]
-const characters = (charactersData as CharacterMatch[]).map((character) => hydrateCharacterVisual(character))
+// ── 异步加载数据 ──────────────────────────────────────────
+// 数据不再顶层静态导入，改为首次使用时按需异步加载
+let quizDataPromise: Promise<{
+  questions: Question[]
+  archetypes: Archetype[]
+  characters: CharacterMatch[]
+}> | null = null
+
+function loadQuizData() {
+  if (!quizDataPromise) {
+    quizDataPromise = Promise.all([
+      import('../data/questions.json'),
+      import('../data/archetypes.json'),
+      import('../data/characters.json'),
+    ]).then(([q, a, c]) => ({
+      questions: q.default as Question[],
+      archetypes: a.default as Archetype[],
+      characters: (c.default as CharacterMatch[]).map(hydrateCharacterVisual),
+    }))
+  }
+  return quizDataPromise
+}
+
+// ── 同步数据引用（数据加载完毕后赋值） ──────────────────────
+const questions = ref<Question[]>([])
+const archetypes = ref<Archetype[]>([])
+const characters = ref<CharacterMatch[]>([])
+
+// 数据是否已就绪
+const dataReady = computed(() => questions.value.length > 0)
 
 const UNANSWERED = -10
 
@@ -18,7 +42,7 @@ function isAnsweredValue(value: number) {
   return value >= -3 && value <= 3
 }
 
-const emptyAnswers = () => Array.from({ length: questions.length }, () => UNANSWERED)
+const emptyAnswers = () => Array.from({ length: questions.value.length }, () => UNANSWERED)
 
 const state = reactive({
   currentIndex: 0,
@@ -26,9 +50,9 @@ const state = reactive({
   latestRecord: hydrateQuizRecord(loadLastRecord() as QuizRecord | null),
 })
 
-const currentQuestion = computed(() => questions[state.currentIndex] ?? null)
+const currentQuestion = computed(() => questions.value[state.currentIndex] ?? null)
 const selectedOptionIndex = computed(() => state.answers[state.currentIndex] ?? UNANSWERED)
-const progress = computed(() => (state.currentIndex + 1) / questions.length)
+const progress = computed(() => (questions.value.length ? (state.currentIndex + 1) / questions.value.length : 0))
 const answeredCount = computed(() => state.answers.filter((answer) => isAnsweredValue(answer)).length)
 const firstUnansweredIndex = computed(() => state.answers.findIndex((answer) => !isAnsweredValue(answer)))
 const canGoNext = computed(() => isAnsweredValue(selectedOptionIndex.value))
@@ -43,12 +67,12 @@ function selectOption(optionIndex: number) {
 
 function selectOptionAt(questionIndex: number, optionValue: number) {
   if (!isAnsweredValue(optionValue)) return
-  if (questionIndex < 0 || questionIndex >= questions.length) return
+  if (questionIndex < 0 || questionIndex >= questions.value.length) return
   state.answers[questionIndex] = optionValue
 }
 
 function goNext() {
-  if (canGoNext.value && state.currentIndex < questions.length - 1) {
+  if (canGoNext.value && state.currentIndex < questions.value.length - 1) {
     state.currentIndex += 1
   }
 }
@@ -60,7 +84,7 @@ function goPrev() {
 }
 
 function jumpToQuestion(index: number) {
-  if (index >= 0 && index < questions.length) {
+  if (index >= 0 && index < questions.value.length) {
     state.currentIndex = index
   }
 }
@@ -82,9 +106,9 @@ function finalizeQuiz(): QuizResult | null {
 
   const result = calculateQuizResult({
     answers: state.answers,
-    questions,
-    archetypes,
-    characters,
+    questions: questions.value,
+    archetypes: archetypes.value,
+    characters: characters.value,
   })
 
   const record: QuizRecord = {
@@ -105,6 +129,18 @@ function resumeLastResult() {
 
 export function useQuiz() {
   return {
+    // 异步初始化：调用方在需要数据时 await
+    ensureData: async () => {
+      const data = await loadQuizData()
+      questions.value = data.questions
+      archetypes.value = data.archetypes
+      characters.value = data.characters
+      // 如果 answers 长度和 questions 不匹配，重置
+      if (state.answers.length !== questions.value.length) {
+        state.answers = emptyAnswers()
+      }
+    },
+    dataReady,
     questions,
     archetypes,
     characters,
@@ -129,8 +165,8 @@ export function useQuiz() {
     createDebugResult: (characterId: string): QuizResult | null =>
       createDebugQuizResult({
         characterId,
-        archetypes,
-        characters,
+        archetypes: archetypes.value,
+        characters: characters.value,
       }),
   }
 }

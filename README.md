@@ -11,7 +11,7 @@ ACG Type Indicator
 <p align="center">
   <a href="https://acgti.tianxingleo.top/"><img src="https://img.shields.io/badge/Deploy-Cloudflare_Pages-F38020?style=flat-square&logo=cloudflare" alt="Deploy to Cloudflare Pages" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License" /></a>
-  <img src="https://img.shields.io/badge/Hits-3.5M+-green.svg?style=flat-square" alt="Hits" />
+  <img src="https://img.shields.io/badge/Hits-4M+-green.svg?style=flat-square" alt="Hits" />
 </p>
 
 [**✨ 立即体验**](https://acgti.tianxingleo.top/) | [**📖 阅读文档**](#️-架构与原理) | [**🤝 参与贡献**](#-贡献)
@@ -39,7 +39,7 @@ ACG Type Indicator
 
 - **MBTI 四维判定**：基于 E/I、S/N、T/F、J/P 四大维度构建严谨的底层框架。
 - **8 种专属原型**：发光主角位 · 冰面观察者 · 誓约队长 · 灵巧回旋者 · 温柔修复者 · 影面策士 · 混沌火花 · 月下守护者。
-- **40+ 经典角色库**：涵盖 VOCALOID、EVA、名侦探柯南、东方、孤独摇滚、MyGO、原神等热门作品，持续扩充中。
+- **42 位角色库**：当前包含 40 位常规角色与 2 位隐藏角色，涵盖 VOCALOID、EVA、名侦探柯南、东方、孤独摇滚、MyGO、原神等热门作品，持续扩充中。
 - **可视化交互**：16personalities 风格的交互式倾向滑块，直观展现你的思维倾向。
 - **一键分享**：精美的结果图报表，支持一键导出 PNG 海报分享给同好。
 - **纯前端架构**：无后端、无注册、无数据收集，测算过程全部在本地浏览器完成，极致极速且保护隐私。
@@ -127,7 +127,7 @@ src/
 |:-----|:-----|
 | `src/data/questions.json` | 39 道情境式题目 — 维度、原型权重、场景标签 |
 | `src/data/archetypes.json` | 8 个角色原型 — 名称、描述、亮点、短板 |
-| `src/data/characters.json` | 40+ 个角色条目 — 角色代码、MBTI 映射、标签、六维向量 |
+| `src/data/characters.json` | 42 个角色条目（含 2 个隐藏角色）— 角色代码、MBTI 映射、标签、六维向量 |
 | `src/data/characterVisuals.json` | 角色视觉配置 — 立绘、色彩、主题 |
 | `src/data/characterProbabilities.json` | 角色命中概率 — 基于人群统计的先验分布 |
 
@@ -135,7 +135,8 @@ src/
 
 ## 📰 时间线
 
-- **2026.4.13 21:00:** 网站访问人数达到 100 万，网站访问量超过 350 万，仓库Star 数达到 300
+- **2026.4.14 15:00** [网站](https://acgti.tianxingleo.top/)访问量超过 400 万
+- **2026.4.13 21:00:** [网站](https://acgti.tianxingleo.top/)访问人数达到 100 万，仓库Star 数达到 300
 - **2026.4.12 8:00:** 访问人数达到 50 万
 - **2026.4.11 23:00:** 进入 [**永雏塔菲**](https://www.bilibili.com/video/BV11FDyBZEN1/?spm_id_from=333.337.search-card.all.click) 直播间
 - **2026.4.11 12:00:** 在校内 100 人 BanG Dream 群测试，首次公开
@@ -162,9 +163,11 @@ npm run build
 
 当前项目仍处于早期阶段，题目数量和角色库都还不够丰富。如果你有好的情境题目想法或想补充更多作品的角色，非常期待你的参与：
 
-- 补充新角色 → 编辑 `src/data/characters.json`
+- 补充新角色 → 编辑 `src/data/characters.json`（详见 [新增角色流程](docs/新增角色流程.md)）
 - 添加新题目 → 编辑 `src/data/questions.json`
 - 修复 Bug / 改进 UI → 直接提 PR
+
+> 新增角色的完整流程（含 WebP 图片转换、缩略图生成、概率重算等）请参考 [**新增角色流程文档**](docs/新增角色流程.md)。
 
 ### 分支管理
 
@@ -240,7 +243,7 @@ git push origin v0.1.0
 
 ## 作者
 
-**[tianxingleo](https://github.com/tianxingleo/)** · [tianxingleo.top](https://tianxingleo.top)
+**tianxingleo** · [GitHub 主页](https://github.com/tianxingleo/) · [作者主页](https://tianxingleo.top)
 
 <div align="center">
 

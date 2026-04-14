@@ -86,8 +86,10 @@
             </div>
             <img
               class="featured-stream-image"
-              src="/images/characters/永雏塔菲.png"
+              src="/images/characters/永雏塔菲.webp"
               :alt="t('home.socialProof.imageAlt')"
+              decoding="async"
+              fetchpriority="high"
             />
           </div>
         </aside>

@@ -97,7 +97,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, computed } from 'vue'
+import { nextTick, onMounted, ref, computed } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -123,8 +123,14 @@ const {
   jumpToQuestion,
   selectOptionAt,
   finalizeQuiz,
+  ensureData,
 } = useQuiz()
 const { t, tm } = useI18n()
+
+// 进入答题页时才加载题库数据
+onMounted(() => {
+  void ensureData()
+})
 
 const questionRefs = ref<HTMLElement[]>([])
 const pendingUnansweredIndex = ref<number | null>(null)

@@ -78,6 +78,7 @@ export interface CharacterMatch {
   hidden?: boolean
   series: string
   image?: string
+  thumb?: string
   accent?: string
   matchCode: string
   matchCodeFlex?: string[]

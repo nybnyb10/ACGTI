@@ -1415,6 +1415,43 @@
     }
   },
   {
+    "id": "kasugano-sora",
+    "name": "春日野穹",
+    "hidden": true,
+    "series": "缘之空",
+    "image": "/images/characters/春日野穹.png",
+    "matchCode": "INFP",
+    "matchCodeFlex": [
+      "ISFP",
+      "INTP"
+    ],
+    "code": "SORA",
+    "title": "病弱宅女·极致的依赖",
+    "archetypeId": "icebound-observer",
+    "tags": [
+      "网络冲浪达人",
+      "黑兔布偶本体",
+      "防备心拉满",
+      "终极羁绊"
+    ],
+    "note": "平时是一副沉默寡言、带着黑兔布偶的病弱宅女模样，习惯用冷漠和带刺的语言掩饰内心的极度不安。她对外界的社交毫无兴趣，但在卸下所有心防后，那份不顾一切、几乎令人窒息的依赖感足以打破所有世俗的常规。属于「只要认定你，连世界都可以不要」的极端纯粹型。",
+    "vector": {
+      "expression": -3,
+      "temperature": 1,
+      "judgement": -2,
+      "order": -3,
+      "agency": -2,
+      "aura": 2
+    },
+    "signature": {
+      "uniqueAxes": {
+        "expression": -3,
+        "order": -3,
+        "agency": -2
+      }
+    }
+  },
+  {
     "id": "yanami-anna",
     "name": "八奈见杏菜",
     "series": "败犬女主太多了！",
