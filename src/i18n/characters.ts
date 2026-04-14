@@ -388,6 +388,12 @@ const characterNameI18n: Record<string, LocalizedText> = {
     en: 'Sora Kasugano',
     ja: '春日野穹',
   },
+  myrtle: {
+    'zh-CN': '桃金娘',
+    'zh-TW': '桃金娘',
+    en: 'Myrtle',
+    ja: 'テンニンカ',
+  }
 }
 
 const seriesI18n: Record<string, LocalizedText> = {

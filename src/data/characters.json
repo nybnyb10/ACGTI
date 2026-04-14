@@ -2482,5 +2482,41 @@
         "agency": -1
       }
     }
+  },
+  {
+    "id": "myrtle",
+    "name": "桃金娘",
+    "series": "明日方舟",
+    "image": "/images/characters/桃金娘.webp",
+    "matchCode": "ENFP",
+    "matchCodeFlex": [
+      "ENFJ",
+      "ESFP"
+    ],
+    "code": "MYRT",
+    "title": "大将军(自称)·来自地下世界的元气少女",
+    "archetypeId": "luminous-lead",
+    "tags": [
+      "131cm的统率力",
+      "杜林族清醒担当",
+      "工牌失踪案当事人",
+      "统领商店街的大将军"
+    ],
+    "note": "充满活力的杜林族女孩，自称统率第一大道及三条商店街的「大将军」。虽然身高只有131cm，但战场上的感染力和指挥水准让人刮目相看。来自地下世界的她，是少数不瞌睡的杜林族，对地上世界充满好奇。喜欢收集「宝物」，但是却连工牌都能弄丢。",
+    "vector": {
+      "expression": 3,
+      "temperature": 2,
+      "judgement": 1,
+      "order": 0,
+      "agency": 1,
+      "aura": 2
+    },
+    "signature": {
+      "uniqueAxes": {
+        "expression": 3,
+        "temperature": 2,
+        "aura": 2
+      }
+    }
   }
 ]

@@ -298,5 +298,10 @@
 			"image": "/images/characters/春日野穹.webp",
 			"thumb": "/images/characters/thumbs/春日野穹.webp",
 			"accent": "#E2E5E9"
+		},
+		"myrtle": {
+			"image": "/images/characters/桃金娘.webp",
+			"thumb": "/images/characters/thumbs/桃金娘.webp",
+			"accent": "#E9B44C"
 		}
 	}
