@@ -337,11 +337,30 @@ function dismissUpdatePopup(rememberDismissal = true) {
 }
 
 .update-popup-backdrop {
+  appearance: none;
   position: absolute;
   inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
   border: 0;
+  outline: none;
+  box-shadow: none;
   background: rgba(24, 33, 41, 0.12);
   cursor: pointer;
+  transform: none;
+  transition: opacity 0.24s ease;
+}
+
+.update-popup-backdrop:hover,
+.update-popup-backdrop:active,
+.update-popup-backdrop:focus,
+.update-popup-backdrop:focus-visible {
+  background: rgba(24, 33, 41, 0.12);
+  box-shadow: none;
+  outline: none;
+  transform: none;
 }
 
 .update-popup {
