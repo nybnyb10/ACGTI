@@ -10,7 +10,7 @@ ACG Type Indicator
 
 <p align="center">
   <a href="https://acgti.tianxingleo.top/"><img src="https://img.shields.io/badge/Deploy-Cloudflare_Pages-F38020?style=flat-square&logo=cloudflare" alt="Deploy to Cloudflare Pages" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg?style=flat-square" alt="License" /></a>
   <img src="https://img.shields.io/badge/Hits-4.5M+-green.svg?style=flat-square" alt="Hits" />
 </p>
 
@@ -202,7 +202,18 @@ git push origin v0.2.0
 
 ### 代码授权
 
-本项目前端源代码基于 [MIT License](LICENSE) 开源。您可以自由地学习、修改和分发本项目的源代码，但请保留原作者的版权声明。
+本项目前端源代码基于 [Apache License 2.0](LICENSE) 开源。您可以学习、修改和分发本项目的代码，但在再分发或衍生发布时，需要一并提供许可证文本、保留适用的版权与归属声明，并对已修改文件作出显著标识。根目录中的 [NOTICE](NOTICE) 记录了本项目的原始归属信息。
+
+### 归属与修改说明
+
+- 本项目由 **tianxingleo / Li Tianxing** 原始创建，原始仓库为 <https://github.com/tianxingleo/ACGTI>。
+- 再分发或衍生版本不应删除原始版权与归属信息，也不应将修改版本描述为完全独立原创而不提及来源。
+- 修改过的版本应明确说明哪些文件或内容已经调整，避免与原始项目混淆。
+
+### 品牌与官方关系声明
+
+- `ACGTI` 项目名称、仓库标识、站点文案结构以及项目级品牌表达，不因 Apache-2.0 自动授予商标或官方背书许可。
+- 任何再分发、镜像站、改版站或衍生项目，均不得暗示自己与原作者存在官方合作、官方维护或获得原作者认可，除非另有明确授权。
 
 ### 知识产权与素材声明 ⚠️
 
