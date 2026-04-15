@@ -60,9 +60,9 @@ const VECTOR_AXES: DimensionId[] = ['expression', 'temperature', 'judgement', 'o
 const ARCHETYPE_IDS = Object.values(ROLE_TO_ARCHETYPE)
 
 const MBTI_WEIGHT = 0.25
-const ARCHETYPE_WEIGHT = 0.35
-const VECTOR_WEIGHT = 0.3
-const CHARACTER_SPECIFIC_WEIGHT = 0.1
+const ARCHETYPE_WEIGHT = 0.28
+const VECTOR_WEIGHT = 0.27
+const CHARACTER_SPECIFIC_WEIGHT = 0.2
 const CLOSE_MATCH_THRESHOLD = 0.025
 
 // 16personalities 风格的维度标签配置
@@ -565,7 +565,9 @@ function scoreUniqueAxes(
     const actual = userVector[axis]
     const axisWeight = Math.max(0.5, Math.abs(expected))
     const distance = Math.abs(actual - expected)
-    const similarity = Math.max(0, 1 - distance / 18)
+    // 角色签名轴需要更强的辨识度，否则极端画像会被相邻的泛型角色长期压住。
+    const normalizedDistance = Math.min(1, distance / 6)
+    const similarity = Math.max(0, 1 - normalizedDistance)
     weightedScore += similarity * axisWeight
     weightTotal += axisWeight
   }
