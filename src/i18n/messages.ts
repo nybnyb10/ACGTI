@@ -67,9 +67,11 @@ export const messages = {
     },
     home: {
       updateBadge: {
-        tag: '重大更新',
-        text: '欢迎回来再测一次。角色库已经扩充到原来的 300%，这次命中的角色代码可能和以前完全不同。',
+        tag: '4.15 重大更新',
+        title: '角色库扩充到原来的 300%',
+        text: '欢迎回来再测一次。最近新增了很多角色，这次命中的角色代码可能和你之前完全不同。',
         link: '开始测试 / 重新测试',
+        dismiss: '关闭更新公告',
       },
       heroTitle: '"终于有人把你看懂了。"',
       heroSubtitle: 'ACGTI 取自 MBTI，是一个专为泛二次元受众打造的角色原型测试。只要做几道情境题，就能测出你在二次元世界里的专属角色代码、四维面板，外加一份详细的本命角色解析。',
@@ -363,9 +365,11 @@ export const messages = {
     },
     home: {
       updateBadge: {
-        tag: '重大更新',
-        text: '歡迎回來再測一次。角色庫已經擴充到原來的 300%，這次命中的角色代碼可能和以前完全不同。',
+        tag: '4.15 重大更新',
+        title: '角色庫擴充到原來的 300%',
+        text: '歡迎回來再測一次。最近新增了很多角色，這次命中的角色代碼可能和你之前完全不同。',
         link: '開始測試 / 重新測試',
+        dismiss: '關閉更新公告',
       },
       heroTitle: '"終於有人把你看懂了。"',
       heroSubtitle: 'ACGTI 取自 MBTI，是一個專為泛二次元受眾打造的角色原型測試。只要做幾道情境題，就能測出你在二次元世界裡的專屬角色代碼、四維面板，外加一份詳細的本命角色解析。',
@@ -834,9 +838,11 @@ export const messages = {
     },
     home: {
       updateBadge: {
-        tag: 'Major Update',
-        text: 'Come back and retake it. The character library is now 300% of the original size, so your matched character code may be very different this time.',
+        tag: '4.15 Major Update',
+        title: 'The character library is now 300% of the original size',
+        text: 'Come back and retake it. A lot of new characters were added, so your matched character code may be very different this time.',
         link: 'Start / Retake',
+        dismiss: 'Dismiss update notice',
       },
       heroTitle: '"Finally, someone gets you."',
       heroSubtitle: 'In about 10 minutes, get a character-style personality report with your code, trait percentages, and archetype match.',
@@ -1130,9 +1136,11 @@ export const messages = {
     },
     home: {
       updateBadge: {
-        tag: '大型更新',
-        text: '前に遊んだ人も、もう一度どうぞ。キャラライブラリは初期比 300% まで拡張され、今回のキャラコードは以前とかなり変わる可能性があります。',
+        tag: '4.15 大型更新',
+        title: 'キャラライブラリが初期比 300% に拡張',
+        text: '前に遊んだ人も、もう一度どうぞ。最近たくさんの新キャラが追加され、今回のキャラコードは以前とかなり変わる可能性があります。',
         link: '始める / もう一度',
+        dismiss: '更新告知を閉じる',
       },
       heroTitle: '「やっと、わかってくれる人がいた。」',
       heroSubtitle: '約 10 分で、キャラコード、各軸の比率、アーキタイプ解説つきのレポートを受け取れます。',

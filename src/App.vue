@@ -224,7 +224,7 @@ const authorSocialLinks: AuthorSocialLink[] = [
           <h3 class="footer-title">友情链接</h3>
           <p class="footer-note">特别鸣谢 <a href="https://saurlax.com/" target="_blank" rel="noopener noreferrer" style="color: #3ba17c; text-decoration: none; font-weight: 600;">saurlax</a> 提供 GPT-5.4 Token 支持</p>
         </div>
-        <div class="footer-section">
+        <div class="footer-section author-social-section">
           <h3 class="footer-title">作者社交媒体</h3>
           <div class="author-social-list">
             <a
@@ -242,7 +242,7 @@ const authorSocialLinks: AuthorSocialLink[] = [
                   <path v-for="path in social.paths" :key="path" :d="path" />
                 </svg>
               </span>
-              {{ social.label }}
+              <span class="author-social-label">{{ social.label }}</span>
             </a>
           </div>
         </div>

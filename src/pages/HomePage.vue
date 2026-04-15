@@ -1,17 +1,29 @@
 <template>
   <div class="home">
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-update-badge animate-float-up">
-          <span class="badge-tag">{{ t('home.updateBadge.tag') }}</span>
-          <span class="badge-text">{{ t('home.updateBadge.text') }}</span>
-          <RouterLink to="/quiz" class="badge-link">
+    <Transition name="update-popup">
+      <div v-if="isPopupReady && showUpdatePopup" class="update-popup-shell" role="presentation">
+        <button class="update-popup-backdrop" type="button" tabindex="-1" aria-hidden="true" @click="dismissUpdatePopup(true)"></button>
+        <aside class="update-popup" role="dialog" aria-modal="true" :aria-label="t('home.updateBadge.tag')">
+          <button class="update-popup-close" type="button" :aria-label="t('home.updateBadge.dismiss')" @click="dismissUpdatePopup(true)">
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <p class="update-popup-tag">{{ t('home.updateBadge.tag') }}</p>
+          <p class="update-popup-title">{{ t('home.updateBadge.title') }}</p>
+          <p class="update-popup-text">{{ t('home.updateBadge.text') }}</p>
+          <RouterLink to="/quiz" class="update-popup-link" @click="dismissUpdatePopup(true)">
             {{ t('home.updateBadge.link') }}
             <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
           </RouterLink>
-        </div>
+        </aside>
+      </div>
+    </Transition>
+
+    <section class="hero">
+      <div class="container hero-inner">
         <h1 class="hero-title">{{ t('home.heroTitle') }}</h1>
         <p class="hero-subtitle">{{ t('home.heroSubtitle') }}</p>
         <div class="hero-actions">
@@ -193,7 +205,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 import AdsenseSlot from '../components/AdsenseSlot.vue'
 import { useI18n } from '../i18n'
@@ -201,6 +213,15 @@ import { useI18n } from '../i18n'
 const homeAdSlot = String(import.meta.env.VITE_ADSENSE_SLOT_HOME ?? '').trim()
 const { t, tm } = useI18n()
 const relayFeedback = ref('')
+const isPopupReady = ref(false)
+const showUpdatePopup = ref(false)
+
+const HOME_UPDATE_DISMISS_KEY = 'acgti:home-update-2026-04-15-popup-v2-dismissed'
+const UPDATE_POPUP_DELAY_MS = 500
+const UPDATE_POPUP_AUTO_HIDE_MS = 5200
+
+let popupShowTimer: ReturnType<typeof setTimeout> | null = null
+let popupHideTimer: ReturnType<typeof setTimeout> | null = null
 
 const stats = computed(() => tm<Array<{ value: string; label: string; color: string }>>('home.stats'))
 
@@ -245,6 +266,35 @@ const testimonials = computed(() =>
   })),
 )
 
+onMounted(() => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  isPopupReady.value = true
+
+  if (window.localStorage.getItem(HOME_UPDATE_DISMISS_KEY) === '1') {
+    return
+  }
+
+  popupShowTimer = window.setTimeout(() => {
+    showUpdatePopup.value = true
+    popupHideTimer = window.setTimeout(() => {
+      dismissUpdatePopup(false)
+    }, UPDATE_POPUP_AUTO_HIDE_MS)
+  }, UPDATE_POPUP_DELAY_MS)
+})
+
+onBeforeUnmount(() => {
+  if (popupShowTimer) {
+    clearTimeout(popupShowTimer)
+  }
+
+  if (popupHideTimer) {
+    clearTimeout(popupHideTimer)
+  }
+})
+
 async function copyQuizLink() {
   try {
     const link = new URL('/quiz', window.location.href).toString()
@@ -254,12 +304,154 @@ async function copyQuizLink() {
     relayFeedback.value = t('app.common.copyFail')
   }
 }
+
+function dismissUpdatePopup(rememberDismissal = true) {
+  showUpdatePopup.value = false
+
+  if (popupShowTimer) {
+    clearTimeout(popupShowTimer)
+    popupShowTimer = null
+  }
+
+  if (popupHideTimer) {
+    clearTimeout(popupHideTimer)
+    popupHideTimer = null
+  }
+
+  if (rememberDismissal && typeof window !== 'undefined') {
+    window.localStorage.setItem(HOME_UPDATE_DISMISS_KEY, '1')
+  }
+}
 </script>
 
 <style scoped>
 .home {
   background: #fff;
   color: #333;
+}
+
+.update-popup-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+}
+
+.update-popup-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(24, 33, 41, 0.12);
+  cursor: pointer;
+}
+
+.update-popup {
+  position: absolute;
+  top: 104px;
+  right: 24px;
+  width: 360px;
+  max-width: calc(100% - 2rem);
+  padding: 1rem 1rem 1.1rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 226, 231, 0.92);
+  box-shadow: 0 20px 48px rgba(23, 39, 49, 0.16);
+  backdrop-filter: blur(14px);
+  box-sizing: border-box;
+}
+
+.update-popup-tag {
+  margin: 0;
+  color: #d39f1d;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.update-popup-title {
+  margin: 0.45rem 0 0;
+  color: #23313a;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.update-popup-text {
+  margin: 0.65rem 0 0;
+  color: #5b6973;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.update-popup-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1rem;
+  min-height: 42px;
+  padding: 0 1rem;
+  border-radius: 999px;
+  background: #4899a3;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 12px 24px rgba(72, 153, 163, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.update-popup-link:hover {
+  background: #3f8891;
+  transform: translateY(-1px);
+  box-shadow: 0 16px 28px rgba(63, 136, 145, 0.24);
+}
+
+.update-popup-link svg,
+.update-popup-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.update-popup-link svg {
+  transition: transform 0.2s ease;
+}
+
+.update-popup-link:hover svg {
+  transform: translateX(3px);
+}
+
+.update-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #f3f6f8;
+  color: #6f7d88;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.update-popup-close:hover {
+  background: #e7edf1;
+  color: #394854;
+  transform: rotate(90deg);
+}
+
+.update-popup-enter-active,
+.update-popup-leave-active {
+  transition: opacity 0.24s ease;
+}
+
+.update-popup-enter-from,
+.update-popup-leave-to {
+  opacity: 0;
 }
 
 .container {
@@ -286,71 +478,6 @@ async function copyQuizLink() {
   font-size: clamp(2.2rem, 5.5vw, 3.5rem);
   line-height: 1.15;
   font-weight: 800;
-}
-
-.hero-update-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  max-width: min(960px, 100%);
-  margin: 0 auto 1.5rem;
-  padding: 0.45rem 0.5rem 0.45rem 1rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 10px 28px rgba(29, 53, 58, 0.14);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  text-align: left;
-}
-
-.badge-tag {
-  flex-shrink: 0;
-  padding: 0.28rem 0.8rem;
-  border-radius: 999px;
-  background: #e5b540;
-  color: #fff;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-}
-
-.badge-text {
-  font-size: 0.95rem;
-  font-weight: 600;
-  line-height: 1.5;
-  opacity: 0.96;
-}
-
-.badge-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  flex-shrink: 0;
-  min-height: 40px;
-  padding: 0 1rem;
-  border-radius: 999px;
-  background: #fff;
-  color: #4899a3;
-  font-size: 0.9rem;
-  font-weight: 800;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.badge-link svg {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.2s ease;
-}
-
-.badge-link:hover {
-  background: #f4f8f8;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(33, 54, 59, 0.12);
-}
-
-.badge-link:hover svg {
-  transform: translateX(3px);
 }
 
 .hero-subtitle {
@@ -1083,20 +1210,18 @@ async function copyQuizLink() {
 }
 
 @media (max-width: 768px) {
+  .update-popup {
+    top: auto;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    width: auto;
+    border-radius: 20px;
+  }
+
   .hero {
     padding-top: 4.2rem;
     padding-bottom: 11.5rem;
-  }
-
-  .hero-update-badge {
-    flex-direction: column;
-    gap: 0.8rem;
-    padding: 1rem;
-    border-radius: 22px;
-  }
-
-  .badge-text {
-    text-align: center;
   }
 
   .hero-scene {
