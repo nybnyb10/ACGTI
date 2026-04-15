@@ -550,6 +550,30 @@ const characterNameI18n: Record<string, LocalizedText> = {
     en: 'Shorekeeper',
     ja: 'ショアキーパー',
   },
+  doro: {
+    'zh-CN': 'doro',
+    'zh-TW': 'doro',
+    en: 'doro',
+    ja: 'Doro',
+  },
+  firefly: {
+    'zh-CN': '流萤',
+    'zh-TW': '流螢',
+    en: 'Firefly',
+    ja: 'ホタル',
+  },
+  matikanetannhauser: {
+    'zh-CN': '待兼诗歌剧',
+    'zh-TW': '待兼詩歌劇',
+    en: 'Matikanetannhauser',
+    ja: 'マチカネタンホイザ',
+  },
+  cartethyia: {
+    'zh-CN': '卡提希娅',
+    'zh-TW': '卡提希婭',
+    en: 'Cartethyia',
+    ja: 'カルテシア',
+  },
 }
 
 const seriesI18n: Record<string, LocalizedText> = {
@@ -654,6 +678,18 @@ const seriesI18n: Record<string, LocalizedText> = {
     'zh-TW': '賽馬娘 Pretty Derby',
     en: 'Uma Musume Pretty Derby',
     ja: 'ウマ娘 プリティーダービー',
+  },
+  '胜利女神：妮姬': {
+    'zh-CN': '胜利女神：妮姬',
+    'zh-TW': '勝利女神：妮姬',
+    en: 'GODDESS OF VICTORY: NIKKE',
+    ja: '勝利の女神：NIKKE',
+  },
+  '崩坏：星穹铁道': {
+    'zh-CN': '崩坏：星穹铁道',
+    'zh-TW': '崩壞：星穹鐵道',
+    en: 'Honkai: Star Rail',
+    ja: '崩壊：スターレイル',
   },
   '玉子市场': {
     'zh-CN': '玉子市场',

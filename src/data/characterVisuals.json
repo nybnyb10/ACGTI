@@ -419,5 +419,25 @@
   "shorekeeper": {
     "image": "/images/characters/守岸人.png",
     "accent": "#4B629A"
+  },
+  "doro": {
+    "image": "/images/characters/doro.webp",
+    "thumb": "/images/characters/thumbs/doro.webp",
+    "accent": "#F8B4C4"
+  },
+  "firefly": {
+    "image": "/images/characters/流萤.webp",
+    "thumb": "/images/characters/thumbs/流萤.webp",
+    "accent": "#7FD8B3"
+  },
+  "matikanetannhauser": {
+    "image": "/images/characters/待兼诗歌剧.webp",
+    "thumb": "/images/characters/thumbs/待兼诗歌剧.webp",
+    "accent": "#F5C04D"
+  },
+  "cartethyia": {
+    "image": "/images/characters/卡提希娅.webp",
+    "thumb": "/images/characters/thumbs/卡提希娅.webp",
+    "accent": "#9FD5E8"
   }
 }
