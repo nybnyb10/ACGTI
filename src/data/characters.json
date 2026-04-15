@@ -3111,5 +3111,320 @@
         "aura": 1
       }
     }
+  },
+  {
+    "id": "nakano-nino",
+    "name": "中野二乃",
+    "series": "五等分的新娘",
+    "addedAt": "2026-04-16",
+    "matchCode": "ESFJ",
+    "matchCodeFlex": [
+      "ESTJ",
+      "ENFP"
+    ],
+    "code": "NINO",
+    "title": "恋爱暴走机车·傲娇教科书",
+    "archetypeId": "chaos-spark",
+    "tags": [
+      "下药狂魔",
+      "护妹大将",
+      "恋爱没有刹车",
+      "直球天后"
+    ],
+    "note": "一开始像只浑身带刺的刺猬，为了保护妹妹们甚至能直接给你端上一杯加料的水。但只要攻略成功，她的傲娇滤镜会瞬间粉碎，变成一辆完全没有刹车的恋爱暴走机车。属于“只要认定了你，哪怕撞南墙也要把你和墙一起撞倒”的究极直球选手。",
+    "vector": {
+      "expression": 3,
+      "temperature": 2,
+      "judgement": 2,
+      "order": 1,
+      "agency": 3,
+      "aura": 2
+    },
+    "signature": {
+      "uniqueAxes": {
+        "expression": 3,
+        "agency": 3,
+        "judgement": 2
+      }
+    }
+  },
+  {
+    "id": "yor-forger",
+    "name": "约尔·福杰",
+    "series": "间谍过家家",
+    "addedAt": "2026-04-16",
+    "matchCode": "ISFJ",
+    "matchCodeFlex": [
+      "ISTJ",
+      "INFP"
+    ],
+    "code": "YORF",
+    "title": "荆棘公主·脑回路清奇的杀手",
+    "archetypeId": "moonlit-guardian",
+    "tags": [
+      "物理系厨神",
+      "天然呆人妻",
+      "一脚踢飞汽车",
+      "烦恼不如暗杀"
+    ],
+    "note": "表面上是温婉可人、连切菜都能切到自己手的贤妻良母，背地里却是代号“荆棘公主”的顶尖杀手。她的脑回路跟她的物理战斗力一样异于常人，遇到解决不了的人际交往问题，第一反应往往是“是不是把他偷偷杀掉比较好”。",
+    "vector": {
+      "expression": 0,
+      "temperature": 2,
+      "judgement": -1,
+      "order": 1,
+      "agency": 2,
+      "aura": 3
+    },
+    "signature": {
+      "uniqueAxes": {
+        "aura": 3,
+        "temperature": 2,
+        "judgement": -1
+      }
+    }
+  },
+  {
+    "id": "sakagami-tomoyo",
+    "name": "坂上智代",
+    "series": "CLANNAD",
+    "addedAt": "2026-04-16",
+    "matchCode": "ESTJ",
+    "matchCodeFlex": [
+      "ENTJ"
+    ],
+    "code": "TMYO",
+    "title": "武帝·为了樱花树的会长",
+    "archetypeId": "oathbound-captain",
+    "tags": [
+      "连击破百",
+      "小镇最强传说",
+      "笨拙的责任感",
+      "飞踢警告"
+    ],
+    "note": "曾经是打遍小镇无敌手、能把人踢在半空中下不来的不良少女，现在却是认真负责、背负一切的学生会长。战斗力虽然爆表，但在喜欢的人面前却总是展现出笨拙又惹人怜爱的一面。是一个把“责任”和“爱”都死死扛在肩上的武帝。",
+    "vector": {
+      "expression": 1,
+      "temperature": 1,
+      "judgement": 3,
+      "order": 3,
+      "agency": 3,
+      "aura": 2
+    },
+    "signature": {
+      "uniqueAxes": {
+        "judgement": 3,
+        "order": 3,
+        "agency": 3
+      }
+    }
+  },
+  {
+    "id": "azusagawa-kaede",
+    "name": "梓川枫",
+    "series": "青春猪头少年不会梦到兔女郎学姐",
+    "addedAt": "2026-04-16",
+    "matchCode": "INFP",
+    "matchCodeFlex": [
+      "ISFP"
+    ],
+    "code": "KAED",
+    "title": "熊猫睡衣·努力的家里蹲",
+    "archetypeId": "gentle-healer",
+    "tags": [
+      "兄控天花板",
+      "看家本领是卖萌",
+      "畏惧外界",
+      "今日份的努力"
+    ],
+    "note": "披着熊猫睡衣的重度家里蹲，把“哥哥”视为全世界的绝对中心。因为惧怕外界的视线而把自己锁在家里，但却愿意为了哥哥，用尽全身力气去完成“出门走两步”这种常人看来微不足道的小事。她的每一次鼓起勇气，都让人心疼到想给她买一车布丁。",
+    "vector": {
+      "expression": -2,
+      "temperature": 2,
+      "judgement": 0,
+      "order": 0,
+      "agency": 0,
+      "aura": 1
+    },
+    "signature": {
+      "uniqueAxes": {
+        "expression": -2,
+        "agency": 0,
+        "temperature": 2
+      }
+    }
+  },
+  {
+    "id": "aisaka-taiga",
+    "name": "逢坂大河",
+    "series": "龙与虎",
+    "addedAt": "2026-04-16",
+    "matchCode": "ISFP",
+    "matchCodeFlex": [
+      "INFP",
+      "ESTP"
+    ],
+    "code": "TIGA",
+    "title": "掌中老虎·木刀纯爱战神",
+    "archetypeId": "chaos-spark",
+    "tags": [
+      "极度傲娇",
+      "生活九级伤残",
+      "一言不合就开干",
+      "笨拙的温柔"
+    ],
+    "note": "身高一米四出头，脾气却能掀翻屋顶的“掌中老虎”。随身携带木刀，具有强烈的攻击性，但生活自理能力基本为零。剥开那一层带刺且暴力的外壳，里面藏着的其实是一个极度渴望被爱、笨拙到连自己心意都搞不清楚的小女孩。",
+    "vector": {
+      "expression": 2,
+      "temperature": 1,
+      "judgement": -1,
+      "order": -2,
+      "agency": 2,
+      "aura": 2
+    },
+    "signature": {
+      "uniqueAxes": {
+        "expression": 2,
+        "order": -2,
+        "judgement": -1
+      }
+    }
+  },
+  {
+    "id": "oyama-mahiro",
+    "name": "绪山真寻",
+    "series": "别当哥哥了！",
+    "matchCode": "INTP",
+    "matchCodeFlex": [
+      "ISFP",
+      "INFP"
+    ],
+    "code": "MAHR",
+    "title": "废柴尼特·被迫变身的妹妹",
+    "archetypeId": "trickster-orbit",
+    "tags": [
+      "前世是游戏废人",
+      "性别认知持续掉线",
+      "无可救药的死宅",
+      "萌混过关"
+    ],
+    "note": "你以为她是个天真可爱的初中生，其实躯壳里装了个无可救药的死宅。从最开始的疯狂抗拒，到后来的“女孩子真香”，她用亲身经历展示了什么叫极度被动的人格。每天的终极目标只是想缩在房间里打游戏，却总是被命运（和亲妹妹）安排得明明白白。",
+    "vector": {
+      "expression": -1,
+      "temperature": 1,
+      "judgement": -2,
+      "order": -2,
+      "agency": -3,
+      "aura": 1
+    },
+    "signature": {
+      "uniqueAxes": {
+        "agency": -3,
+        "order": -2,
+        "judgement": -2
+      }
+    }
+  },
+  {
+    "id": "tokai-teio",
+    "name": "东海帝皇",
+    "series": "赛马娘 Pretty Derby",
+    "matchCode": "ESFP",
+    "matchCodeFlex": [
+      "ENFP"
+    ],
+    "code": "TEIO",
+    "title": "不屈的奇迹·帝皇舞步",
+    "archetypeId": "luminous-lead",
+    "tags": [
+      "蜂蜜特饮狂热粉",
+      "会长唯粉",
+      "骨折也拦不住",
+      "天生的发光体"
+    ],
+    "note": "永远充满活力，做梦都想成为像“皇帝”一样无败的三冠赛马娘。就算遭遇了足以终结职业生涯的粉碎性骨折，也能在所有人都不看好的绝境中奇迹复活。属于那种“只要她还在场上奔跑，你就会忍不住被她的光芒感染并大声欢呼”的耀眼存在。",
+    "vector": {
+      "expression": 3,
+      "temperature": 2,
+      "judgement": 1,
+      "order": -1,
+      "agency": 3,
+      "aura": 3
+    },
+    "signature": {
+      "uniqueAxes": {
+        "expression": 3,
+        "agency": 3,
+        "aura": 3
+      }
+    }
+  },
+  {
+    "id": "eyjafjalla",
+    "name": "艾雅法拉",
+    "series": "明日方舟",
+    "matchCode": "INFJ",
+    "matchCodeFlex": [
+      "ISFJ"
+    ],
+    "code": "EYJA",
+    "title": "温柔核弹·盲目的火山学者",
+    "archetypeId": "gentle-healer",
+    "tags": [
+      "前辈！",
+      "听力受损",
+      "最强法系输出",
+      "文献狂魔"
+    ],
+    "note": "柔弱乖巧的学妹外表下，藏着能瞬间融化整个战场的毁灭性火山魔法。尽管身体正被矿石病一点点夺走听力与视力，她依然执着于探寻父母留下的火山研究。每次战斗结束后那声甜甜的“前辈”，是对抗这片废土残酷世界最好的止痛药。",
+    "vector": {
+      "expression": -1,
+      "temperature": 3,
+      "judgement": 2,
+      "order": 2,
+      "agency": 2,
+      "aura": 2
+    },
+    "signature": {
+      "uniqueAxes": {
+        "temperature": 3,
+        "judgement": 2,
+        "order": 2
+      }
+    }
+  },
+  {
+    "id": "shorekeeper",
+    "name": "守岸人",
+    "series": "鸣潮",
+    "matchCode": "INFJ",
+    "matchCodeFlex": [
+      "INTJ"
+    ],
+    "code": "SHKP",
+    "title": "黑海岸之主·为你降生的数据",
+    "archetypeId": "moonlit-guardian",
+    "tags": [
+      "只注视你一人",
+      "星海与蝴蝶",
+      "AI生出人类情感",
+      "隐性偏执"
+    ],
+    "note": "诞生于数据的星海，原本只是个毫无感情、负责维系世界运转的观测者，却因为你的存在而长出了名为“私心”的灵魂。她能把整个世界的命运与概率算得清清楚楚，但她所有的神性与计算，最终都只为保护你这一件事而服务。",
+    "vector": {
+      "expression": -2,
+      "temperature": 0,
+      "judgement": 3,
+      "order": 2,
+      "agency": 2,
+      "aura": 3
+    },
+    "signature": {
+      "uniqueAxes": {
+        "expression": -2,
+        "judgement": 3,
+        "aura": 3
+      }
+    }
   }
 ]

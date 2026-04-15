@@ -106,6 +106,36 @@ const characterNameI18n: Record<string, LocalizedText> = {
     en: 'Tamako Kitashirakawa',
     ja: '北白川たまこ',
   },
+  'nakano-nino': {
+    'zh-CN': '中野二乃',
+    'zh-TW': '中野二乃',
+    en: 'Nino Nakano',
+    ja: '中野二乃',
+  },
+  'yor-forger': {
+    'zh-CN': '约尔·福杰',
+    'zh-TW': '約兒·佛傑',
+    en: 'Yor Forger',
+    ja: 'ヨル・フォージャー',
+  },
+  'sakagami-tomoyo': {
+    'zh-CN': '坂上智代',
+    'zh-TW': '坂上智代',
+    en: 'Tomoyo Sakagami',
+    ja: '坂上智代',
+  },
+  'azusagawa-kaede': {
+    'zh-CN': '梓川枫',
+    'zh-TW': '梓川楓',
+    en: 'Kaede Azusagawa',
+    ja: '梓川かえで',
+  },
+  'aisaka-taiga': {
+    'zh-CN': '逢坂大河',
+    'zh-TW': '逢坂大河',
+    en: 'Taiga Aisaka',
+    ja: '逢坂大河',
+  },
   'shinomiya-kaguya': {
     'zh-CN': '四宫辉夜',
     'zh-TW': '四宮輝夜',
@@ -714,6 +744,24 @@ const seriesI18n: Record<string, LocalizedText> = {
     'zh-TW': '青春豬頭少年不會夢到兔女郎學姊',
     en: 'Rascal Does Not Dream of Bunny Girl Senpai',
     ja: '青春ブタ野郎はバニーガール先輩の夢を見ない',
+  },
+  '五等分的新娘': {
+    'zh-CN': '五等分的新娘',
+    'zh-TW': '五等分的新娘',
+    en: 'The Quintessential Quintuplets',
+    ja: '五等分の花嫁',
+  },
+  '间谍过家家': {
+    'zh-CN': '间谍过家家',
+    'zh-TW': '間諜家家酒',
+    en: 'SPY x FAMILY',
+    ja: 'SPY×FAMILY',
+  },
+  '龙与虎': {
+    'zh-CN': '龙与虎',
+    'zh-TW': '龍與虎',
+    en: 'Toradora!',
+    ja: 'とらドラ！',
   },
   '凉宫春日的忧郁': {
     'zh-CN': '凉宫春日的忧郁',

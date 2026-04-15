@@ -378,5 +378,46 @@
   "kitashirakawa-tamako": {
     "image": "/images/characters/北白川玉子.png",
     "accent": "#EF838D"
+  },
+  "nakano-nino": {
+    "image": "/images/characters/中野二乃.webp",
+    "thumb": "/images/characters/thumbs/中野二乃.webp",
+    "accent": "#D08BBA"
+  },
+  "yor-forger": {
+    "image": "/images/characters/约尔.webp",
+    "thumb": "/images/characters/thumbs/约尔.webp",
+    "accent": "#912429"
+  },
+  "sakagami-tomoyo": {
+    "image": "/images/characters/坂上智代.webp",
+    "thumb": "/images/characters/thumbs/坂上智代.webp",
+    "accent": "#9BB7D4"
+  },
+  "azusagawa-kaede": {
+    "image": "/images/characters/梓川枫.webp",
+    "thumb": "/images/characters/thumbs/梓川枫.webp",
+    "accent": "#F2C082"
+  },
+  "aisaka-taiga": {
+    "image": "/images/characters/逢坂大河.webp",
+    "thumb": "/images/characters/thumbs/逢坂大河.webp",
+    "accent": "#D38E55"
+  },
+  "oyama-mahiro": {
+    "image": "/images/characters/绪山真寻.png",
+    "accent": "#F596AA"
+  },
+  "tokai-teio": {
+    "image": "/images/characters/东海帝皇.png",
+    "accent": "#3B81C8"
+  },
+  "eyjafjalla": {
+    "image": "/images/characters/艾雅法拉.png",
+    "accent": "#E25B45"
+  },
+  "shorekeeper": {
+    "image": "/images/characters/守岸人.png",
+    "accent": "#4B629A"
   }
 }
