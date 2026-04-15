@@ -32,6 +32,8 @@ export const messages = {
           reminders: '使用提醒',
           status: '当前状态',
           openSource: '开源社区',
+          friendlyLinks: '友情链接',
+          authorSocial: '作者社交媒体',
         },
         links: {
           startQuiz: '开始 ACGTI 测试',
@@ -51,6 +53,8 @@ export const messages = {
           library: `8 个原型 / ${CHARACTER_COUNT} 位角色`,
           likeIt: '喜欢这个测试？',
           star: '去 GitHub Star ✨',
+          saurlaxCreditBefore: '特别鸣谢 ',
+          saurlaxCreditAfter: ' 提供 GPT-5.4 Token 支持',
         },
         social: {
           home: '首页',
@@ -59,6 +63,7 @@ export const messages = {
           characters: '角色',
           about: '说明',
         },
+        socialLinks: { xiaoheihe: '小黑盒', bilibili: '哔哩哔哩', xiaohongshu: '小红书', github: 'GitHub' },
       },
       language: {
         label: '语言',
@@ -344,7 +349,7 @@ export const messages = {
         cta: '立即測試',
       },
       footer: {
-        sections: { test: '測試入口', project: '專案內容', reminders: '使用提醒', status: '目前狀態', openSource: '開源社群' },
+        sections: { test: '測試入口', project: '專案內容', reminders: '使用提醒', status: '目前狀態', openSource: '開源社群', friendlyLinks: '友情連結', authorSocial: '作者社群媒體' },
         links: {
           startQuiz: '開始 ACGTI 測試',
           latestResult: '查看最近結果',
@@ -363,8 +368,11 @@ export const messages = {
           library: `8 個原型 / ${CHARACTER_COUNT} 位角色`,
           likeIt: '喜歡這個測試？',
           star: '去 GitHub Star ✨',
+          saurlaxCreditBefore: '特別感謝 ',
+          saurlaxCreditAfter: ' 提供 GPT-5.4 Token 支持',
         },
         social: { home: '首頁', quiz: '測試', intro: '類型', characters: '角色', about: '說明' },
+        socialLinks: { xiaoheihe: '小黑盒', bilibili: '嗶哩嗶哩', xiaohongshu: '小紅書', github: 'GitHub' },
       },
       language: { label: '語言' },
       common: { sponsored: '贊助內容', unknownCharacter: '未知角色', unknownSeries: '未知作品', shareCode: '我在 ACGTI 命中的角色代碼是 {code}', shareCharacter: '命中角色：{name}（{series}）', shareUnknown: '命中角色：未知角色', shareRarity: '稀有評級：{tier}（第 {rank}/{total} 名）', shareProbability: '理論命中率：{prob}%', shareProbabilityDesc: '該機率是隨機答卷基線下的角色命中率，用來說明統計分布，不再直接等同於展示稀有度。', shareArchetype: '對應原型：{name}', shareRole: '劇情位置：{role}', exportSuccess: '海報已匯出為 PNG。', exportFail: '匯出失敗，請稍後重試。', copySuccess: '分享文案已複製。', copyFail: '複製失敗，請手動截圖。' },
@@ -823,7 +831,7 @@ export const messages = {
         cta: 'Start Now',
       },
       footer: {
-        sections: { test: 'Quiz', project: 'Project', reminders: 'Notes', status: 'Status', openSource: 'Open Source' },
+        sections: { test: 'Quiz', project: 'Project', reminders: 'Notes', status: 'Status', openSource: 'Open Source', friendlyLinks: 'Links', authorSocial: "Author's Social" },
         links: {
           startQuiz: 'Start ACGTI',
           latestResult: 'Latest result',
@@ -842,8 +850,11 @@ export const messages = {
           library: `8 archetypes / ${CHARACTER_COUNT} characters`,
           likeIt: 'Enjoyed the test?',
           star: 'Star on GitHub ✨',
+          saurlaxCreditBefore: 'Special thanks to ',
+          saurlaxCreditAfter: ' for GPT-5.4 Token support',
         },
         social: { home: 'Home', quiz: 'Quiz', intro: 'Types', characters: 'Chars', about: 'About' },
+        socialLinks: { xiaoheihe: 'Xiaoheihe', bilibili: 'Bilibili', xiaohongshu: 'Xiaohongshu', github: 'GitHub' },
       },
       language: { label: 'Language' },
       common: { sponsored: 'Sponsored', unknownCharacter: 'Unknown character', unknownSeries: 'Unknown series', shareCode: 'My ACGTI character code is {code}', shareCharacter: 'Character: {name} ({series})', shareUnknown: 'Character: Unknown', shareRarity: 'Rarity tier: {tier} (#{rank}/{total})', shareProbability: 'Baseline hit rate: {prob}%', shareProbabilityDesc: 'This probability is the character hit rate under the random-answer baseline. It explains the statistical spread rather than serving as the main rarity label.', shareArchetype: 'Archetype: {name}', shareRole: 'Narrative Role: {role}', exportSuccess: 'Poster exported as PNG.', exportFail: 'Export failed, try again.', copySuccess: 'Text copied to clipboard.', copyFail: 'Copy failed, screenshot instead.' },
@@ -1302,7 +1313,7 @@ export const messages = {
         cta: '今すぐ診断',
       },
       footer: {
-        sections: { test: 'テスト', project: 'プロジェクト', reminders: '注意事項', status: '現在の状態', openSource: 'オープンソース' },
+        sections: { test: 'テスト', project: 'プロジェクト', reminders: '注意事項', status: '現在の状態', openSource: 'オープンソース', friendlyLinks: 'リンク', authorSocial: '作者のSNS' },
         links: {
           startQuiz: 'ACGTI を始める',
           latestResult: '最近の結果',
@@ -1321,8 +1332,11 @@ export const messages = {
           library: `8 原型 / ${CHARACTER_COUNT} キャラ`,
           likeIt: '気に入ったら？',
           star: 'GitHub で Star ✨',
+          saurlaxCreditBefore: '',
+          saurlaxCreditAfter: ' さんによる GPT-5.4 Token サポートに感謝',
         },
         social: { home: 'ホーム', quiz: '診断', intro: 'タイプ', characters: 'キャラ', about: '概要' },
+        socialLinks: { xiaoheihe: 'Xiaoheihe', bilibili: 'Bilibili', xiaohongshu: 'Xiaohongshu', github: 'GitHub' },
       },
       language: { label: '言語' },
       common: { sponsored: 'スポンサー', unknownCharacter: '不明なキャラ', unknownSeries: '不明な作品', shareCode: '私のACGTIキャラコードは {code}', shareCharacter: '命中キャラ：{name}（{series}）', shareUnknown: '命中キャラ：不明', shareRarity: '希少ランク：{tier}（{rank}/{total}位）', shareProbability: '理論命中率：{prob}%', shareProbabilityDesc: 'この確率はランダム回答ベースラインでのキャラ出現率です。統計分布を示すための値であり、そのまま表示上の希少度ではありません。', shareArchetype: '対応原型：{name}', shareRole: '役割：{role}', exportSuccess: 'ポスターをPNGとしてエクスポートしました', exportFail: 'エクスポートに失敗しました', copySuccess: 'テキストをコピーしました', copyFail: 'コピーに失敗しました' },
