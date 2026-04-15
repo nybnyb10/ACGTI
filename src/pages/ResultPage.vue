@@ -412,6 +412,25 @@ function viewMatchedCharacter(characterId: string) {
           </div>
         </section>
 
+        <a
+          class="public-service-card public-service-card-link"
+          href="https://www.dlut.edu.cn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          v-reveal
+        >
+          <div class="public-service-icon-shell">
+            <div class="public-service-icon-ring">
+              <img class="public-service-emblem" src="/dlut-emblem.png" :alt="t('result.publicService.alt')" />
+            </div>
+          </div>
+          <div class="public-service-content">
+            <p class="public-service-label">{{ t('result.publicService.label') }}</p>
+            <p class="public-service-copy">{{ t('result.publicService.copy') }}</p>
+            <p class="public-service-meta">{{ t('result.publicService.meta') }}</p>
+          </div>
+        </a>
+
         <section class="traits-section" id="traits-section" v-reveal>
           <div class="section-title-wrap">
             <div class="section-index">1</div>
@@ -1265,6 +1284,97 @@ function viewMatchedCharacter(characterId: string) {
   margin-top: 24px;
 }
 
+.public-service-card {
+  margin-bottom: 24px;
+  padding: 16px 18px;
+  border: 1px solid #d9ece4;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f3fbf7 0%, #ffffff 100%);
+  box-shadow: 0 10px 22px rgba(59, 161, 124, 0.07);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.public-service-card-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.public-service-card-link:hover {
+  transform: translateY(-2px);
+  border-color: #b8ddd0;
+  box-shadow: 0 14px 28px rgba(59, 161, 124, 0.1);
+}
+
+.public-service-card-link:focus-visible {
+  outline: 3px solid rgba(66, 152, 180, 0.22);
+  outline-offset: 3px;
+}
+
+.public-service-icon-shell {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.public-service-icon-shell::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(66, 152, 180, 0.18) 0%, rgba(66, 152, 180, 0) 72%);
+}
+
+.public-service-icon-ring {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #ffffff 0%, #eef7f9 100%);
+  border: 1px solid rgba(66, 152, 180, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 8px 18px rgba(66, 152, 180, 0.12);
+}
+
+.public-service-emblem {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.public-service-content {
+  min-width: 0;
+}
+
+.public-service-label {
+  margin: 0 0 6px;
+  color: #33a474;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.public-service-copy {
+  margin: 0;
+  color: #2f3a45;
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 700;
+}
+
+.public-service-meta {
+  margin: 8px 0 0;
+  color: #6f7a83;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .result-sidebar {
   position: relative;
 }
@@ -1574,6 +1684,25 @@ function viewMatchedCharacter(characterId: string) {
     line-height: 1.7;
   }
 
+  .public-service-card {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .public-service-icon-ring {
+    width: 62px;
+    height: 62px;
+  }
+
+  .public-service-emblem {
+    width: 46px;
+    height: 46px;
+  }
+
+  .public-service-copy {
+    font-size: 14px;
+  }
+
   .section-title-wrap {
     gap: 10px;
     margin-bottom: 12px;
@@ -1666,6 +1795,16 @@ function viewMatchedCharacter(characterId: string) {
 
   .result-body {
     gap: 14px;
+  }
+
+  .public-service-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px;
+  }
+
+  .public-service-icon-shell {
+    align-self: flex-start;
   }
 
   .trait-labels {
