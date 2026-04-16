@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
 import { useI18n } from '../i18n'
 import { getHiddenCharacterTags, getHiddenCharacterTitle, getLocalizedCharacterName, getLocalizedCharacterSeries, isHiddenCharacter } from '../i18n/characters'
@@ -50,6 +50,20 @@ const posterTags = computed(() => {
 const posterNarrativeRole = computed(() =>
   t(`archetypes.${props.result.archetype.id}.narrativeRole`, undefined, props.result.archetype.narrativeRole),
 )
+const posterImage = computed(() => {
+  if (!primaryCharacter.value) {
+    return ''
+  }
+
+  return primaryCharacter.value.image || `/images/characters/${primaryCharacter.value.id}.webp`
+})
+const posterSeries = computed(() => {
+  if (!primaryCharacter.value) {
+    return t('app.common.unknownSeries')
+  }
+
+  return getLocalizedCharacterSeries(primaryCharacter.value, locale.value)
+})
 function hexToRgb(hex: string) {
   const normalized = hex.replace('#', '')
   const full = normalized.length === 3
@@ -144,62 +158,77 @@ const raritySummaryLabel = computed(() => {
   <div class="poster-container">
     <section ref="rootEl" class="share-poster" :style="{ '--poster-accent': resultThemeColor }">
       <div class="share-poster__accent-bar"></div>
-      
+      <div class="share-poster__surface"></div>
+
       <div class="share-poster__inner">
-        <div class="share-poster__header">
-          <p class="share-poster__kicker">{{ t('result.shareCard', undefined, 'ACG TYPE INDICATOR') }} · {{ result.code }}</p>
-          <h2 class="share-poster__title" :style="{ color: resultThemeColor }">
-            {{ primaryCharacter ? getLocalizedCharacterName(primaryCharacter, locale, { revealHidden: true }) : t('archetypes.' + result.archetype.id + '.name', undefined, result.archetype.name) }}
-          </h2>
-          <p class="share-poster__subtitle">{{ posterSubtitle }}</p>
+        <div class="share-poster__copy">
+          <div class="share-poster__header">
+            <p class="share-poster__kicker">{{ t('result.shareCard', undefined, 'ACG TYPE INDICATOR') }}</p>
+            <div class="share-poster__title-row">
+              <span class="share-poster__code">{{ result.code }}</span>
+              <p v-if="primaryCharacter?.personaBasis?.type === 'fandom-impression'" class="share-poster__basis-tip">
+                {{ t('result.personaBasisBadge') }}
+              </p>
+            </div>
+            <h2 class="share-poster__title" :style="{ color: resultThemeColor }">
+              {{ primaryCharacter ? getLocalizedCharacterName(primaryCharacter, locale, { revealHidden: true }) : t('archetypes.' + result.archetype.id + '.name', undefined, result.archetype.name) }}
+            </h2>
+            <p class="share-poster__subtitle">{{ posterSubtitle }}</p>
+          </div>
+
+          <div class="share-poster__metrics">
+            <div class="share-poster__metric">
+              <span class="metric-label">{{ t('result.match') }}</span>
+              <strong class="metric-value" :style="{ color: resultThemeColor }">{{ result.matchScore }}%</strong>
+            </div>
+            <div class="share-poster__metric-divider"></div>
+            <div class="share-poster__metric">
+              <span class="metric-label">{{ t('result.rarity') }}</span>
+              <strong class="metric-value metric-value--rarity" :style="rarityTierStyle">{{ rarityTierLabel }}</strong>
+              <span class="metric-subvalue">{{ raritySummaryLabel }}</span>
+            </div>
+          </div>
+
+          <div class="share-poster__tags">
+            <span
+              v-for="tag in posterTags"
+              :key="tag"
+              class="tag-pill"
+              :style="{ backgroundColor: resultThemeColor + '15', color: resultThemeColor }"
+            ># {{ tag }}</span>
+          </div>
+
+          <div class="share-poster__body">
+            <div class="share-poster__block">
+              <p class="block-label"><AppIcon name="star" /> {{ t('result.spotlight', undefined, '亮点表现') }}</p>
+              <p class="block-content">{{ t('archetypes.' + result.archetype.id + '.spotlight', undefined, result.archetype.spotlight) }}</p>
+            </div>
+            <div class="share-poster__block">
+              <p class="block-label"><AppIcon name="book" /> {{ t('result.narrativeRole', undefined, '剧情位置') }}</p>
+              <p class="block-content">{{ posterNarrativeRole }}</p>
+            </div>
+          </div>
+
+          <div class="share-poster__footer">
+            <div class="footer-logo">ACGTI</div>
+            <div class="footer-desc">{{ t('result.testNote', undefined, '你的社交白皮书') }}</div>
+          </div>
         </div>
 
-        <div class="share-poster__metrics">
-          <div class="share-poster__metric">
-            <span class="metric-label">{{ t('result.match') }}</span>
-            <strong class="metric-value" :style="{ color: resultThemeColor }">{{ result.matchScore }}%</strong>
-          </div>
-          <div class="share-poster__metric-divider"></div>
-          <div class="share-poster__metric">
-            <span class="metric-label">{{ t('result.rarity') }}</span>
-            <strong class="metric-value metric-value--rarity" :style="rarityTierStyle">{{ rarityTierLabel }}</strong>
-            <span class="metric-subvalue">{{ raritySummaryLabel }}</span>
-          </div>
-        </div>
-
-        <div class="share-poster__tags">
-          <span
-            v-for="tag in posterTags"
-            :key="tag"
-            class="tag-pill"
-            :style="{ backgroundColor: resultThemeColor + '15', color: resultThemeColor }"
-          ># {{ tag }}</span>
-        </div>
-
-        <div class="share-poster__body">
-          <div class="share-poster__block">
-            <p class="block-label"><AppIcon name="star" /> {{ t('result.spotlight', undefined, '亮点表现') }}</p>
-            <p class="block-content">{{ t('archetypes.' + result.archetype.id + '.spotlight', undefined, result.archetype.spotlight) }}</p>
-          </div>
-          <div class="share-poster__block">
-            <p class="block-label"><AppIcon name="book" /> {{ t('result.narrativeRole', undefined, '剧情位置') }}</p>
-            <p class="block-content">{{ posterNarrativeRole }}</p>
-          </div>
-          <div class="share-poster__block">
-            <p class="block-label"><AppIcon name="character" /> {{ t('result.hitCharacter', undefined, '对应角色') }}</p>
-            <p class="block-content" style="font-weight: bold; color: #333e49;">
+        <div class="share-poster__visual">
+          <div class="share-poster__visual-card">
+            <div class="visual-chip">{{ t('result.hitCharacter', undefined, '对应角色') }}</div>
+            <p class="visual-name">
               {{ primaryCharacter ? getLocalizedCharacterName(primaryCharacter, locale) : t('app.common.unknownCharacter') }}
-              <span style="font-weight: normal; color: #8c9ba5; font-size: 0.9em; margin-left: 4px;">{{ primaryCharacter ? getLocalizedCharacterSeries(primaryCharacter, locale) : t('app.common.unknownSeries') }}</span>
             </p>
-            <p v-if="primaryCharacter?.personaBasis?.type === 'fandom-impression'" style="margin: 6px 0 0; font-size: 11px; color: #a08a3a; font-weight: 600; line-height: 1.5;">
-              {{ t('result.personaBasisBadge') }}：{{ t('result.personaBasisTip') }}
-            </p>
+            <p class="visual-series">{{ posterSeries }}</p>
+            <div class="visual-image-shell">
+              <img v-if="posterImage" :src="posterImage" :alt="primaryCharacter ? getLocalizedCharacterName(primaryCharacter, locale) : t('app.common.unknownCharacter')" class="visual-image" />
+              <div v-else class="visual-fallback">
+                <AppIcon name="fallback" />
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="share-poster__footer">
-          <div class="footer-logo">ACGTI</div>
-          <div class="footer-desc">{{ t('result.testNote', undefined, '你的社交白皮书') }}</div>
         </div>
       </div>
     </section>
@@ -210,32 +239,54 @@ const raritySummaryLabel = computed(() => {
 .poster-container {
   display: flex;
   justify-content: center;
-  
 }
 
 .share-poster {
   position: relative;
-  width: 440px; 
-  background: var(--bg, #ffffff);
-  border-radius: 20px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  width: 980px;
+  min-height: 560px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 34%),
+    linear-gradient(135deg, color-mix(in srgb, var(--poster-accent) 18%, #f5fbfd) 0%, #ffffff 42%, #f7fbfc 100%);
+  border-radius: 28px;
+  box-shadow: 0 24px 80px rgba(31, 57, 76, 0.16);
   overflow: hidden;
   text-align: left;
-  border: 1px solid #eaeaea;
+  border: 1px solid rgba(95, 137, 159, 0.14);
 }
 
 .share-poster__accent-bar {
-  height: 12px;
-  
+  height: 16px;
   background: var(--poster-accent);
 }
 
+.share-poster__surface {
+  position: absolute;
+  inset: 60px -120px auto auto;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--poster-accent) 16%, #ffffff);
+  opacity: 0.65;
+  filter: blur(8px);
+}
+
 .share-poster__inner {
-  padding: 30px 32px;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.9fr);
+  gap: 22px;
+  padding: 28px 30px 26px;
+  align-items: stretch;
+}
+
+.share-poster__copy {
+  display: flex;
+  flex-direction: column;
 }
 
 .share-poster__header {
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .share-poster__kicker {
@@ -247,13 +298,41 @@ const raritySummaryLabel = computed(() => {
   margin: 0 0 8px;
 }
 
+.share-poster__title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.share-poster__code {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--poster-accent) 14%, #ffffff);
+  color: var(--poster-accent);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.share-poster__basis-tip {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #a0832c;
+}
+
 .share-poster__title {
   font-size: 40px;
   font-weight: 900;
-  line-height: 1.1;
-  margin: 0 0 6px;
+  line-height: 1.04;
+  margin: 0 0 8px;
   font-family: system-ui, -apple-system, sans-serif;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.04em;
+  max-width: 10ch;
 }
 
 .share-poster__subtitle {
@@ -261,15 +340,19 @@ const raritySummaryLabel = computed(() => {
   color: #5f6b75;
   margin: 0;
   font-weight: 600;
+  max-width: 34rem;
+  line-height: 1.5;
 }
 
 .share-poster__metrics {
   display: flex;
   align-items: center;
-  background: #f4f6f8;
-  border-radius: 12px;
-  padding: 14px 18px;
-  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(95, 137, 159, 0.12);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
 }
 
 .share-poster__metric {
@@ -325,32 +408,31 @@ const raritySummaryLabel = computed(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 }
 
 .tag-pill {
-  padding: 6px 14px;
+  padding: 7px 14px;
   border-radius: 999px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.03em;
 }
 
 .share-poster__body {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  margin-bottom: 30px;
+  margin-bottom: auto;
 }
 
 .share-poster__block {
-  background: #fff;
-  border: 1px solid #eaeaea;
-  border-left: 4px solid var(--poster-accent);
-  padding: 14px 18px;
-  border-radius: 8px;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(95, 137, 159, 0.12);
+  border-top: 4px solid var(--poster-accent);
+  padding: 16px 18px 18px;
+  border-radius: 16px;
+  min-height: 126px;
 }
 
 .block-label {
@@ -376,8 +458,9 @@ const raritySummaryLabel = computed(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px dashed #eaeaea;
+  border-top: 1px dashed rgba(95, 137, 159, 0.22);
   padding-top: 16px;
+  margin-top: 24px;
 }
 
 .footer-logo {
@@ -391,5 +474,98 @@ const raritySummaryLabel = computed(() => {
   font-size: 12px;
   color: #8c9ba5;
   font-weight: 700;
+}
+
+.share-poster__visual {
+  display: flex;
+}
+
+.share-poster__visual-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  padding: 18px 18px 0;
+  border-radius: 26px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--poster-accent) 14%, #ffffff) 0%, rgba(255, 255, 255, 0.96) 34%, rgba(255, 255, 255, 0.98) 100%);
+  border: 1px solid rgba(95, 137, 159, 0.16);
+  overflow: hidden;
+}
+
+.share-poster__visual-card::before {
+  content: '';
+  position: absolute;
+  inset: auto -34px -40px auto;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--poster-accent) 16%, #ffffff);
+}
+
+.visual-chip {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(95, 137, 159, 0.12);
+  color: #5f6b75;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.visual-name {
+  position: relative;
+  z-index: 1;
+  margin: 16px 0 4px;
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 900;
+  color: #333e49;
+}
+
+.visual-series {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 14px;
+  color: #70808b;
+  font-weight: 600;
+}
+
+.visual-image-shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 320px;
+  margin-top: 8px;
+}
+
+.visual-image {
+  width: 100%;
+  max-width: 320px;
+  max-height: 390px;
+  object-fit: contain;
+  object-position: center center;
+  filter: drop-shadow(0 26px 32px rgba(58, 79, 96, 0.22));
+}
+
+.visual-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+  margin: auto;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--poster-accent);
 }
 </style>
