@@ -1582,7 +1582,7 @@ function viewMatchedCharacter(characterId: string) {
   color: #5f6b75;
   font-size: 14px;
   font-weight: 700;
-  white-space: nowrap;
+  overflow-wrap: break-word;
 }
 
 .nav-card {
